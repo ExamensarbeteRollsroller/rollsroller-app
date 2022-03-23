@@ -6,22 +6,15 @@ import "./translations/LocalizationInit"
 
 export default function App() {
     return (
-        <>
-            <SafeAreaView style={styles.topSafeArea} />
-            <SafeAreaView style={styles.container}>
-                <Startpage />
-            </SafeAreaView>
-        </>
+        <SafeAreaView style={styles.safeArea}>
+            <Startpage />
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    topSafeArea: {
-        flex: 0,
+    safeArea: {
         backgroundColor: "#253A70",
-    },
-    bottomSafeArea: {
         flex: 1,
-        backgroundColor: "#fff",
     },
 })
