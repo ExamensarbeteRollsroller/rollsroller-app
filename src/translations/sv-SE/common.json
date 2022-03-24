@@ -1,7 +1,15 @@
 {
     "startscreen": {
         "title": "Rollsroller",
-        "welcome": "Välkommen",
-        "changeLang": "Byt språk"
+        "welcome": "Välkommen"
+    },
+    "menu": {
+        "home": "Hem",
+        "login": "Logga in",
+        "myprofile": "Min Profil",
+        "myapplicators": "Mina Applikatorbord",
+        "applicators": "Applikatorbord",
+        "changeLang": "Byt språk",
+        "logout": "Logga ut"
     }
 }
