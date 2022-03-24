@@ -1,7 +1,15 @@
 {
     "startscreen": {
         "title": "Rollsroller",
-        "welcome": "Welcome",
-        "changeLang": "Change language"
+        "welcome": "Welcome"
+    },
+    "menu": {
+        "home": "Home",
+        "login": "Login",
+        "myprofile": "My Profile",
+        "myapplicators": "My Applicators",
+        "applicators": "Applicators",
+        "changeLang": "Change language",
+        "logout": "Sign out"
     }
 }

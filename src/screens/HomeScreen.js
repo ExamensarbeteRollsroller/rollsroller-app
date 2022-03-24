@@ -14,14 +14,6 @@ const Startpage = () => {
                 <MenuTopBar setMenuVisibility={setMenuVisibility} />
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("startscreen:welcome")}</Text>
-                    <Button
-                        title={t("startscreen:changeLang")}
-                        onPress={() => {
-                            if (i18n.language === "en")
-                                i18n.changeLanguage("sv")
-                            else i18n.changeLanguage("en")
-                        }}
-                    />
                 </View>
             </View>
         </SafeAreaView>
