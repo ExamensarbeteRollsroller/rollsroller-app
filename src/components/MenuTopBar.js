@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
 import React from "react"
 import { Icon } from "react-native-elements"
 
-const MenuTopBar = ({ setMenuVisibility }) => {
+const MenuTopBar = ({ navigation }) => {
     // Add the small R icon instead of text, centered
 
     return (
@@ -10,8 +10,7 @@ const MenuTopBar = ({ setMenuVisibility }) => {
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {
-                    console.log("Öppnar menyn :)")
-                    setMenuVisibility(true)
+                    navigation.openDrawer()
                 }}
             >
                 <Icon type="material-icons" color="white" name="menu" />

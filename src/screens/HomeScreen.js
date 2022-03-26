@@ -4,14 +4,13 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import MenuTopBar from "../components/MenuTopBar"
 
-const Startpage = () => {
+const Startpage = ({ navigation }) => {
     const { t, i18n } = useTranslation()
-    const [menuVisibility, setMenuVisibility] = useState(false)
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
-                <MenuTopBar setMenuVisibility={setMenuVisibility} />
+                <MenuTopBar navigation={navigation} />
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("startscreen:welcome")}</Text>
                 </View>
