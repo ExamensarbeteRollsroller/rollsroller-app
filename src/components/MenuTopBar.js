@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native"
 import React from "react"
 import { Icon } from "react-native-elements"
 
@@ -13,9 +13,12 @@ const MenuTopBar = ({ navigation }) => {
                     navigation.openDrawer()
                 }}
             >
-                <Icon type="material-icons" color="white" name="menu" />
+                <Icon size={36} type="material-icons" color="white" name="menu" />
             </TouchableOpacity>
-            <Text style={styles.text}>Rollsroller</Text>
+            <Image
+                        source={require("../../assets/images/rollsrollerlogo.png")}
+                        style={styles.logo}
+                    />
         </View>
     )
 }
@@ -38,5 +41,13 @@ const styles = StyleSheet.create({
     text: {
         color: "#fff",
         fontSize: 18,
+    },
+    logo: {
+        width: 25,
+        height: 25,
+        flex: 1,
+        marginRight: "15%",
+        alignItems: "center",
+        resizeMode: 'contain'
     },
 })
