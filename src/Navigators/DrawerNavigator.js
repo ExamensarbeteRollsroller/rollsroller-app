@@ -11,9 +11,8 @@ import ApplicatorsScreen from "../screens/ApplicatorsScreen"
 import MyApplicatorsScreen from "../screens/MyApplicatorsScreen"
 import CustomDrawer from "../components/CustomDrawer"
 
-const Drawer = createDrawerNavigator()
-
 const DrawerNavigator = () => {
+    const Drawer = createDrawerNavigator()
     const { t } = useTranslation()
     // Use redux to save login details and check whether the user is logged in or not
 
