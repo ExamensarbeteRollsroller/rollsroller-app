@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View, Button } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import MenuTopBar from "../components/MenuTopBar"
 
-const Startpage = ({ navigation }) => {
-    const { t, i18n } = useTranslation()
+const HomeScreen = ({ navigation }) => {
+    const { t } = useTranslation()
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -19,7 +18,7 @@ const Startpage = ({ navigation }) => {
     )
 }
 
-export default Startpage
+export default HomeScreen
 
 const styles = StyleSheet.create({
     safeArea: {

@@ -6,7 +6,6 @@ import DrawerNavigator from "./src/Navigators/DrawerNavigator"
 
 import "react-native-gesture-handler"
 import "./src/translations/LocalizationInit"
-import "react-native-gesture-handler"
 
 export default function App() {
     return (

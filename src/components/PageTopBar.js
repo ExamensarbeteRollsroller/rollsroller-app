@@ -4,7 +4,6 @@ import { useNavigation } from "@react-navigation/native"
 import { Icon } from "react-native-elements"
 
 const Topbar = ({ title }) => {
-    const { t } = useTranslation()
     const navigation = useNavigation()
 
     return (
@@ -12,13 +11,12 @@ const Topbar = ({ title }) => {
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {
-                    console.log("Går tillbaka :)")
                     navigation.goBack()
                 }}
             >
                 <Icon type="antdesign" color="white" name="arrowleft" />
             </TouchableOpacity>
-            <Text style={styles.text}>{t(title)}</Text>
+            <Text style={styles.text}>{title}</Text>
         </View>
     )
 }

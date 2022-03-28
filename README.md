@@ -4,7 +4,7 @@ This is an app that is being developed for a bachelor thesis from Karlstad Unive
 
 To run the app, make sure that Expo and all packages are installed
 
-    nmp i -g expo-cli
+    npm i -g expo-cli
     &&
     yarn
 
