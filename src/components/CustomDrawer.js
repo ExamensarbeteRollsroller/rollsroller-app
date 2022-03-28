@@ -88,11 +88,10 @@ const styles = StyleSheet.create({
     },
     logoutbutton: {
         marginTop: 15,
+        marginLeft: -10,
         borderRadius: 25,
         padding: 10,
-        paddingEnd: 15,
-        paddingStart: 15,
-        backgroundColor: "rgba(255, 0, 0, 0.2)",
+        fontSize: 10,
     },
     logout: {
         flexDirection: "row",
