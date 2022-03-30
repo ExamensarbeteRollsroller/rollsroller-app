@@ -1,5 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
-import { useTranslation } from "react-i18next"
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    StatusBar,
+} from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { Icon } from "react-native-elements"
 
@@ -8,6 +13,7 @@ const Topbar = ({ title }) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {

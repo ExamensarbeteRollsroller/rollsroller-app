@@ -19,7 +19,6 @@ const LoginScreen = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
             <PageTopBar title={t("menu:login")} />
             <View style={styles.container}>
                 <Text style={styles.text}>{t("login:emailprompt")}</Text>

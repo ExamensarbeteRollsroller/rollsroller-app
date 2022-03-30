@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native"
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Image,
+    StatusBar,
+} from "react-native"
 import React from "react"
 import { Icon } from "react-native-elements"
 
@@ -7,6 +14,7 @@ const MenuTopBar = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {
