@@ -13,12 +13,17 @@ const MenuTopBar = ({ navigation }) => {
                     navigation.openDrawer()
                 }}
             >
-                <Icon size={36} type="material-icons" color="white" name="menu" />
+                <Icon
+                    size={36}
+                    type="material-icons"
+                    color="white"
+                    name="menu"
+                />
             </TouchableOpacity>
             <Image
-                        source={require("../../assets/images/rollsrollerlogo.png")}
-                        style={styles.logo}
-                    />
+                source={require("../../assets/images/rollsrollerlogo.png")}
+                style={styles.logo}
+            />
         </View>
     )
 }
@@ -48,6 +53,6 @@ const styles = StyleSheet.create({
         flex: 1,
         marginRight: "15%",
         alignItems: "center",
-        resizeMode: 'contain'
+        resizeMode: "contain",
     },
 })

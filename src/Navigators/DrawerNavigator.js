@@ -14,13 +14,12 @@ import CustomDrawer from "../components/CustomDrawer"
 const DrawerNavigator = () => {
     const Drawer = createDrawerNavigator()
     const { t } = useTranslation()
-    // Use redux to save login details and check whether the user is logged in or not
 
     return (
         <Drawer.Navigator
             screenOptions={{
                 headerShown: false,
-                drawerActiveBackgroundColor: "rgba(37, 58, 112, 0.6)",
+                drawerActiveBackgroundColor: "#586d9f",
                 drawerActiveTintColor: "#fff",
                 drawerLabelStyle: {
                     marginLeft: -20,
