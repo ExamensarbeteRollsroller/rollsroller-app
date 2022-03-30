@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, View, StatusBar } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import PageTopBar from "../components/PageTopBar"
@@ -9,8 +9,9 @@ const ApplicatorsScreen = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
+            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
+            <PageTopBar title={t("menu:applicators")} />
             <View style={styles.container}>
-                <PageTopBar title={t("menu:applicators")} />
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("menu:applicators")}</Text>
                 </View>

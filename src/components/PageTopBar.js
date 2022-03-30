@@ -11,7 +11,9 @@ const Topbar = ({ title }) => {
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {
-                    navigation.goBack()
+                    if (navigation.canGoBack()) {
+                        navigation.goBack()
+                    }
                 }}
             >
                 <Icon type="antdesign" color="white" name="arrowleft" />

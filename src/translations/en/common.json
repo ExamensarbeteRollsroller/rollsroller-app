@@ -10,6 +10,14 @@
         "myapplicators": "My Applicators",
         "applicators": "Applicators",
         "changeLang": "Change language",
-        "logout": "Sign out"
+        "logout": "Log out"
+    },
+    "login": {
+        "emailprompt": "Email:",
+        "emailplaceholder": "john@doe.com",
+        "passwordprompt": "Password:",
+        "passwordplaceholder": "YmggnYkP5BR2Zdkhu8cUndLcKRUxTb",
+        "login": "Log in",
+        "register": "Register"
     }
 }

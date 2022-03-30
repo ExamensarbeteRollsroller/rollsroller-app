@@ -11,5 +11,13 @@
         "applicators": "Applikatorbord",
         "changeLang": "Byt språk",
         "logout": "Logga ut"
+    },
+    "login": {
+        "emailprompt": "Mejladress:",
+        "emailplaceholder": "john@blund.se",
+        "passwordprompt": "Lösenord:",
+        "passwordplaceholder": "YmggnYkP5BR2Zdkhu8cUndLcKRUxTb",
+        "login": "Logga in",
+        "register": "Registrera dig"
     }
 }

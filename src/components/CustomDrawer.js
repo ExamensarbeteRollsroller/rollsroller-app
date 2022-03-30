@@ -35,7 +35,7 @@ const CustomDrawer = (props) => {
             </DrawerContentScrollView>
             <View style={styles.footer}>
                 <Button
-                    color={"rgba(37, 58, 112, 0.8)"}
+                    color={"rgba(37, 58, 112, 1)"}
                     title={t("menu:changeLang")}
                     onPress={() => {
                         if (i18n.language === "en") i18n.changeLanguage("sv")
