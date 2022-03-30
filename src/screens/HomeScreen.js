@@ -8,7 +8,6 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
             <MenuTopBar navigation={navigation} />
             <View style={styles.container}>
                 <View style={styles.buttongroup}>

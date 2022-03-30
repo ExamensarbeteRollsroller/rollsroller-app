@@ -9,7 +9,6 @@ const ApplicatorsScreen = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
             <PageTopBar title={t("menu:applicators")} />
             <View style={styles.container}>
                 <View style={styles.buttongroup}>
