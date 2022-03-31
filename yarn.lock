@@ -2542,7 +2542,7 @@ escape-html@~1.0.3:
 
 escape-string-regexp@2.0.0:
   version "2.0.0"
-  resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
   integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^1.0.5:
@@ -2577,7 +2577,7 @@ event-target-shim@^5.0.0, event-target-shim@^5.0.1:
 
 events@^3.2.0:
   version "3.3.0"
-  resolved "https://registry.npmjs.org/events/-/events-3.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
 exec-sh@^0.3.2:
@@ -4790,7 +4790,7 @@ react-native-web@0.17.1:
 
 react-native-webview@^11.18.0:
   version "11.18.0"
-  resolved "https://registry.npmjs.org/react-native-webview/-/react-native-webview-11.18.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.18.0.tgz#4536bf55d2bda28ed0e6662690f0e997e5630647"
   integrity sha512-S7GXNZuM7jqBOY6R3Pp0KNRwpL8JJdbUB7f8J2WLlU++TOaUXDmsn5tlGnoycwyHotX5al5LypRgOPVFzrPxBA==
   dependencies:
     escape-string-regexp "2.0.0"
@@ -4798,7 +4798,7 @@ react-native-webview@^11.18.0:
 
 react-native-youtube-iframe@^2.2.2:
   version "2.2.2"
-  resolved "https://registry.npmjs.org/react-native-youtube-iframe/-/react-native-youtube-iframe-2.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-youtube-iframe/-/react-native-youtube-iframe-2.2.2.tgz#ade1a2e4ead3d539fbb80463f45b59ff1b510b55"
   integrity sha512-og2KW21kCwAHKcnWoyWWBYC6J2Xtqjjwpghhoy9G6zfwZkr8Ej27BbQIAKM/TheJJUZ5/YUrqsgqAdnFYDx5TQ==
   dependencies:
     events "^3.2.0"
