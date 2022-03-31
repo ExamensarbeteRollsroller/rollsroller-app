@@ -2,13 +2,16 @@ import { StyleSheet, Text, View } from "react-native"
 import React from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { useTranslation } from "react-i18next"
-import Ionicons from "react-native-vector-icons/Ionicons"
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
 import HomeScreen from "../screens/HomeScreen"
 import LoginScreen from "../screens/LoginScreen"
 import MyProfileScreen from "../screens/MyProfileScreen"
 import ApplicatorsScreen from "../screens/ApplicatorsScreen"
 import MyApplicatorsScreen from "../screens/MyApplicatorsScreen"
+import SupportScreen from "../screens/SupportScreen"
+import SocialmediaScreen from "../screens/SocialmediaScreen"
 import CustomDrawer from "../components/CustomDrawer"
 
 const DrawerNavigator = () => {
@@ -33,7 +36,7 @@ const DrawerNavigator = () => {
                 component={HomeScreen}
                 options={{
                     drawerIcon: ({ color }) => (
-                        <Ionicons name="home-outline" size={22} color={color} />
+                        <MaterialIcons name="home" size={22} color={color} />
                     ),
                 }}
             />
@@ -42,8 +45,8 @@ const DrawerNavigator = () => {
                 component={LoginScreen}
                 options={{
                     drawerIcon: ({ color }) => (
-                        <Ionicons
-                            name="log-in-outline"
+                        <MaterialCommunityIcons
+                            name="login-variant"
                             size={22}
                             color={color}
                         />
@@ -55,11 +58,7 @@ const DrawerNavigator = () => {
                 component={MyProfileScreen}
                 options={{
                     drawerIcon: ({ color }) => (
-                        <Ionicons
-                            name="person-outline"
-                            size={22}
-                            color={color}
-                        />
+                        <MaterialIcons name="person" size={22} color={color} />
                     ),
                 }}
             />
@@ -68,8 +67,8 @@ const DrawerNavigator = () => {
                 component={MyApplicatorsScreen}
                 options={{
                     drawerIcon: ({ color }) => (
-                        <Ionicons
-                            name="easel-outline"
+                        <MaterialCommunityIcons
+                            name="briefcase-account"
                             size={22}
                             color={color}
                         />
@@ -81,8 +80,34 @@ const DrawerNavigator = () => {
                 component={ApplicatorsScreen}
                 options={{
                     drawerIcon: ({ color }) => (
-                        <Ionicons
-                            name="briefcase-outline"
+                        <MaterialCommunityIcons
+                            name="briefcase"
+                            size={22}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name={t("menu:support")}
+                component={SupportScreen}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <MaterialCommunityIcons
+                            name="headset"
+                            size={22}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name={t("menu:socialmedia")}
+                component={SocialmediaScreen}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <MaterialCommunityIcons
+                            name="youtube"
                             size={22}
                             color={color}
                         />

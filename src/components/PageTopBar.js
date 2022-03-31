@@ -6,7 +6,7 @@ import {
     StatusBar,
 } from "react-native"
 import { useNavigation } from "@react-navigation/native"
-import { Icon } from "react-native-elements"
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 
 const Topbar = ({ title }) => {
     const navigation = useNavigation()
@@ -22,7 +22,11 @@ const Topbar = ({ title }) => {
                     }
                 }}
             >
-                <Icon type="antdesign" color="white" name="arrowleft" />
+                <MaterialCommunityIcons
+                    name="keyboard-backspace"
+                    size={24}
+                    color={"white"}
+                />
             </TouchableOpacity>
             <Text style={styles.text}>{title}</Text>
         </View>
@@ -42,6 +46,7 @@ const styles = StyleSheet.create({
     iconButton: {
         height: 56,
         width: 56,
+        paddingLeft: 14,
         justifyContent: "center",
     },
     text: {

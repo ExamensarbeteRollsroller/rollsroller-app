@@ -7,11 +7,9 @@ import {
     StatusBar,
 } from "react-native"
 import React from "react"
-import { Icon } from "react-native-elements"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
 const MenuTopBar = ({ navigation }) => {
-    // Add the small R icon instead of text, centered
-
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
@@ -21,12 +19,7 @@ const MenuTopBar = ({ navigation }) => {
                     navigation.openDrawer()
                 }}
             >
-                <Icon
-                    size={36}
-                    type="material-icons"
-                    color="white"
-                    name="menu"
-                />
+                <MaterialIcons name="menu" size={36} color={"white"} />
             </TouchableOpacity>
             <Image
                 source={require("../../assets/images/rollsrollerlogo.png")}
@@ -49,11 +42,8 @@ const styles = StyleSheet.create({
     iconButton: {
         height: 56,
         width: 56,
+        paddingLeft: 12,
         justifyContent: "center",
-    },
-    text: {
-        color: "#fff",
-        fontSize: 18,
     },
     logo: {
         width: 25,
