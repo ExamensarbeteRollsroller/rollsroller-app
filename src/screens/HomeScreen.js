@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
         <SafeAreaView style={styles.safeArea}>
             <MenuTopBar navigation={navigation} />
             <View style={styles.container}>
-                <View>
+                <View style={styles.video}> 
                     <YoutubePlayer
                     height={300}
                     play={false}
@@ -20,6 +20,7 @@ const HomeScreen = ({ navigation }) => {
                 </View>
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("startscreen:welcome")}</Text>
+                    <Text style={styles.breadText}>{t("startscreen:lorem")}</Text>
                 </View>
             </View>
         </SafeAreaView>
@@ -38,12 +39,20 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
     },
     buttongroup: {
-        marginTop: 100,
         alignItems: "center",
     },
     text: {
         fontSize: 20,
         fontWeight: "400",
         marginBottom: 20,
+    },
+    breadText: {
+        fontSize: 18,
+        fontWeight: "400",
+        marginLeft: 15,
+        marginRight: 15,
+    },
+    video: {
+         /*Do we even need to modify it? Looks alright already */
     },
 })
