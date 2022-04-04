@@ -4,18 +4,61 @@ import {
     TextInput,
     TouchableHighlight,
     Text,
-    StatusBar,
 } from "react-native"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import PageTopBar from "../components/PageTopBar"
 import { useTranslation } from "react-i18next"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import { useDispatch, useSelector } from "react-redux"
+import * as SecureStore from "expo-secure-store"
+import PageTopBar from "../components/PageTopBar"
+import {
+    setEmail,
+    setFname,
+    setLname,
+    setCompany,
+} from "../../data/slices/userSlice"
 
 const LoginScreen = () => {
     const { t } = useTranslation()
     const [email, onChangeEmail] = useState("")
     const [password, onChangePassword] = useState("")
+    const [login, onLoginPress] = useState(false)
+    const dispatch = useDispatch()
+    // Temporary dummy login data
+    const userData = {
+        email: "john@blund.se",
+        fname: "John",
+        lname: "Blund",
+        company: "Skyltar AB",
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            /*
+            Fetch data from database to verify login credentials and authenticate the user
+            the userdata sent back should have all useful data, 
+            for now only email, firstname, lastname and company is used.
+            If user is valid; credentials are added in local secret storage and
+            in temporary redux for state handling. 
+            */
+            // const userData = await fetch(apiURL)
+            // TODO: Add applicators to redux and secret storage
+            if (userData) {
+                dispatch(
+                    setEmail(userData.email),
+                    setFname(userData.fname),
+                    setLname(userData.lname),
+                    setCompany(userData.company)
+                )
+                const jsonValue = JSON.stringify(userData)
+                await SecureStore.setItemAsync("_userData", jsonValue)
+            }
+        }
+
+        if (login) {
+            fetchData()
+        }
+    }, [login])
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -40,7 +83,7 @@ const LoginScreen = () => {
                     <TouchableHighlight
                         style={styles.button}
                         onPress={() => {
-                            console.log(t("login:login"))
+                            onLoginPress(true)
                         }}
                         underlayColor="#3b5591"
                         activeOpacity={1}
