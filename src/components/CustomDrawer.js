@@ -6,16 +6,38 @@ import {
     Button,
     TouchableOpacity,
 } from "react-native"
-import React from "react"
+import React, { useState } from "react"
 import {
     DrawerContentScrollView,
     DrawerItemList,
 } from "@react-navigation/drawer"
 import { useTranslation } from "react-i18next"
 import Ionicons from "react-native-vector-icons/Ionicons"
+import * as SecureStore from "expo-secure-store"
+import { useDispatch, useSelector } from "react-redux"
+import {
+    setEmail,
+    setFname,
+    setLname,
+    setCompany,
+    selectEmail,
+} from "../../data/slices/userSlice"
 
 const CustomDrawer = (props) => {
     const { t, i18n } = useTranslation()
+    const dispatch = useDispatch()
+    const userEmail = useSelector(selectEmail)
+
+    const handleLogout = async () => {
+        await SecureStore.setItemAsync("_userData", "null")
+        dispatch(
+            setEmail(null),
+            setFname(null),
+            setLname(null),
+            setCompany(null)
+        )
+        console.log("logout")
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -42,23 +64,25 @@ const CustomDrawer = (props) => {
                         else i18n.changeLanguage("en")
                     }}
                 ></Button>
-                <TouchableOpacity
-                    onPress={() => {
-                        console.log("logout")
-                    }}
-                    style={styles.logoutbutton}
-                >
-                    <View style={styles.logout}>
-                        <Ionicons
-                            name="log-out-outline"
-                            size={16}
-                            color="#ff0000"
-                        />
-                        <Text style={styles.logouttext}>
-                            {t("menu:logout")}
-                        </Text>
-                    </View>
-                </TouchableOpacity>
+                {userEmail !== null && (
+                    <TouchableOpacity
+                        onPress={() => {
+                            handleLogout()
+                        }}
+                        style={styles.logoutbutton}
+                    >
+                        <View style={styles.logout}>
+                            <Ionicons
+                                name="log-out-outline"
+                                size={16}
+                                color="#ff0000"
+                            />
+                            <Text style={styles.logouttext}>
+                                {t("menu:logout")}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     )
