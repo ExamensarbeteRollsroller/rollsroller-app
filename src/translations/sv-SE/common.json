@@ -18,8 +18,10 @@
     "login": {
         "emailprompt": "Mejladress:",
         "emailplaceholder": "john@blund.se",
+        "invalidEmail": "Ogilitig mejladress. ",
         "passwordprompt": "Lösenord:",
         "passwordplaceholder": "YmggnYkP5BR2Zdkhu8cUndLcKRUxTb",
+        "invalidPassword": "Lösenordet måste vara minst 12 tecken långt. ",
         "login": "Logga in",
         "register": "Registrera dig"
     }
