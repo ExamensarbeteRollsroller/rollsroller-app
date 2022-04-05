@@ -5,6 +5,7 @@ import {
     View,
     Button,
     TouchableOpacity,
+    TouchableHighlight,
 } from "react-native"
 import React, { useState } from "react"
 import {
@@ -56,14 +57,20 @@ const CustomDrawer = (props) => {
                 </View>
             </DrawerContentScrollView>
             <View style={styles.footer}>
-                <Button
-                    color={"rgba(37, 58, 112, 1)"}
-                    title={t("menu:changeLang")}
+                <TouchableHighlight
+                    style={styles.languageButton}
                     onPress={() => {
                         if (i18n.language === "en") i18n.changeLanguage("sv")
                         else i18n.changeLanguage("en")
+                        console.log(t("menu:changeLang"))
                     }}
-                ></Button>
+                    underlayColor="#3b5591"
+                    activeOpacity={1}
+                >
+                    <Text style={styles.languageButtonText}>
+                        {t("menu:changeLang")}
+                    </Text>
+                </TouchableHighlight>
                 {userEmail !== null && (
                     <TouchableOpacity
                         onPress={() => {
@@ -102,28 +109,43 @@ const styles = StyleSheet.create({
     },
     draweritemlist: {
         backgroundColor: "#fff",
-        paddingTop: 10,
+        paddingTop: 8,
     },
     footer: {
-        padding: 20,
+        padding: 16,
         borderTopWidth: 1,
         borderTopColor: "#ccc",
         alignItems: "flex-start",
     },
     logoutbutton: {
-        marginTop: 15,
-        marginLeft: -10,
-        borderRadius: 25,
-        padding: 10,
-        fontSize: 10,
+        marginTop: 16,
+        padding: 8,
     },
     logout: {
         flexDirection: "row",
         alignItems: "center",
     },
     logouttext: {
-        fontSize: 15,
-        marginLeft: 5,
+        fontSize: 16,
+        marginLeft: 4,
         color: "red",
+    },
+    languageButton: {
+        backgroundColor: "#253A70",
+        alignItems: "center",
+        borderRadius: 6,
+        marginTop: 16,
+        padding: 8,
+        paddingLeft: 16,
+        paddingRight: 16,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 4,
+    },
+    languageButtonText: {
+        fontSize: 16,
+        color: "#FFFFFF",
     },
 })
