@@ -22,5 +22,11 @@
         "passwordplaceholder": "YmggnYkP5BR2Zdkhu8cUndLcKRUxTb",
         "login": "Log in",
         "register": "Register"
+    },
+    "applicators": {
+        "inventor": "Inventor Edition",
+        "premium": "Premium Edition",
+        "regular": "Regular Edition",
+        "entry": "Entry Edition"
     }
 }

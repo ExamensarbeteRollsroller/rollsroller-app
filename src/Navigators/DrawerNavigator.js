@@ -16,6 +16,7 @@ import SupportScreen from "../screens/SupportScreen"
 import SocialmediaScreen from "../screens/SocialmediaScreen"
 import CustomDrawer from "../components/CustomDrawer"
 import SplashScreen from "../screens/SplashScreen"
+import ApplicatorStackNavigator from "./ApplicatorStackNavigator"
 import {
     setEmail,
     setFname,
@@ -128,7 +129,7 @@ const DrawerNavigator = () => {
                     )}
                     <Drawer.Screen
                         name={t("menu:applicators")}
-                        component={ApplicatorsScreen}
+                        component={ApplicatorStackNavigator}
                         options={{
                             drawerIcon: ({ color }) => (
                                 <MaterialCommunityIcons
