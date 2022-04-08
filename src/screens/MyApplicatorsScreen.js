@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar } from "react-native"
+import { StyleSheet, Text, View, StatusBar, Image } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import PageTopBar from "../components/PageTopBar"
@@ -11,9 +11,10 @@ const MyApplicatorsScreen = () => {
         <SafeAreaView style={styles.safeArea}>
             <PageTopBar title={t("menu:myapplicators")} />
             <View style={styles.container}>
-                <View style={styles.buttongroup}>
-                    <Text style={styles.text}>{t("menu:myapplicators")}</Text>
-                </View>
+                
+                    <View style={styles.buttongroup}>
+                        <Text style={styles.text}>{t("menu:myapplicators")}</Text>
+                    </View>
             </View>
         </SafeAreaView>
     )
@@ -28,15 +29,25 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+        flexDirection: "column",
         backgroundColor: "#fff",
     },
     buttongroup: {
-        marginTop: 100,
+        marginTop: 50,
         alignItems: "center",
     },
     text: {
         fontSize: 20,
         fontWeight: "400",
-        marginBottom: 20,
+    },
+    logo: {
+        width: 400,
+        height: 100,
+        flex: 1,
+        resizeMode: "contain",
+    },
+    line: {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
     },
 })

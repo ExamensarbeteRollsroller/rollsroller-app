@@ -24,5 +24,11 @@
         "invalidPassword": "Lösenordet måste vara minst 12 tecken långt. ",
         "login": "Logga in",
         "register": "Registrera dig"
+    },
+    "applicators": {
+        "inventor": "Inventor Edition",
+        "premium": "Premium Edition",
+        "regular": "Regular Edition",
+        "entry": "Entry Edition"
     }
 }
