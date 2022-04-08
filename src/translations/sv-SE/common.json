@@ -28,5 +28,11 @@
     "myapplicators": {
         "settings": "Inställningar",
         "addnewapplicator": "+ Ny applikator"
+    },
+    "applicators": {
+        "inventor": "Inventor Edition",
+        "premium": "Premium Edition",
+        "regular": "Regular Edition",
+        "entry": "Entry Edition"
     }
 }

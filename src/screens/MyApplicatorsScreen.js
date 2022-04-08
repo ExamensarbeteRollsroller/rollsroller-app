@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         flex: 1,
+        flexDirection: "column",
         backgroundColor: "#fff",
     },
     item: {
