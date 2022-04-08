@@ -25,6 +25,10 @@
         "login": "Logga in",
         "register": "Registrera dig"
     },
+    "myapplicators": {
+        "settings": "Inställningar",
+        "addnewapplicator": "+ Ny applikator"
+    },
     "applicators": {
         "inventor": "Inventor Edition",
         "premium": "Premium Edition",

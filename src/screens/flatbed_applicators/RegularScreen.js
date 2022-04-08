@@ -12,7 +12,7 @@ const RegularScreen = () => {
             <PageTopBar title={t("applicators:regular")} />
             <View style={styles.container}>
                 <View style={styles.buttongroup}>
-                    <Text style={styles.text}>{t("menu:regular")}</Text>
+                    <Text style={styles.text}>{t("applicators:regular")}</Text>
                 </View>
             </View>
         </SafeAreaView>

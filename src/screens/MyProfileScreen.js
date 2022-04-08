@@ -3,6 +3,7 @@ import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import PageTopBar from "../components/PageTopBar"
 import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 
 const MyProfileScreen = () => {
     const { t } = useTranslation()

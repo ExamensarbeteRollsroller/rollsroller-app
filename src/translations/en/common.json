@@ -25,6 +25,10 @@
         "login": "Log in",
         "register": "Register"
     },
+    "myapplicators": {
+        "settings": "Settings",
+        "addnewapplicator": "+ New applicator"
+    },
     "applicators": {
         "inventor": "Inventor Edition",
         "premium": "Premium Edition",
