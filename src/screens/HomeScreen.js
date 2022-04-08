@@ -1,26 +1,28 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
-import YoutubePlayer from 'react-native-youtube-iframe';
+import YoutubePlayer from "react-native-youtube-iframe"
 import MenuTopBar from "../components/MenuTopBar"
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
     const { t } = useTranslation()
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <MenuTopBar navigation={navigation} />
+            <MenuTopBar />
             <View style={styles.container}>
-                <View style={styles.video}> 
+                <View style={styles.video}>
                     <YoutubePlayer
-                    height={300}
-                    play={false}
-                    videoId={'gphIFfDERjM'}
+                        height={300}
+                        play={false}
+                        videoId={"gphIFfDERjM"}
                     />
                 </View>
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("startscreen:welcome")}</Text>
-                    <Text style={styles.breadText}>{t("startscreen:lorem")}</Text>
+                    <Text style={styles.breadText}>
+                        {t("startscreen:lorem")}
+                    </Text>
                 </View>
             </View>
         </SafeAreaView>
@@ -53,6 +55,6 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     video: {
-         /*Do we even need to modify it? Looks alright already */
+        /*Do we even need to modify it? Looks alright already */
     },
 })

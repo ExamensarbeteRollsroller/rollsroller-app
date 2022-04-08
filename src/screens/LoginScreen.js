@@ -8,7 +8,7 @@ import {
 import React, { useState, useEffect, useRef } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import * as SecureStore from "expo-secure-store"
 import PageTopBar from "../components/PageTopBar"
 import {
@@ -17,11 +17,14 @@ import {
     setLname,
     setCompany,
 } from "../../data/slices/userSlice"
+import { setApplicators } from "../../data/slices/applicatorsSlice"
 
 const LoginScreen = () => {
     const { t } = useTranslation()
-    const [email, onChangeEmail] = useState("")
-    const [password, onChangePassword] = useState("")
+    const [email, onChangeEmail] = useState(t("login:emailplaceholder")) // Pass a valid email and password to not show error windows from the start
+    const [password, onChangePassword] = useState(
+        t("login:passwordplaceholder")
+    )
     const [emailFocus, setEmailFocus] = useState(false)
     const [passwordFocus, setPasswordFocus] = useState(false)
     const [login, onLoginPress] = useState(false)
@@ -34,6 +37,22 @@ const LoginScreen = () => {
         lname: "Blund",
         company: "Skyltar AB",
     }
+    const userApplicators = [
+        {
+            key: 1,
+            name: "Gertrud",
+            product: "Entry",
+            connectionIP: "555.555.555.555",
+            light: "0,8",
+        },
+        {
+            key: 2,
+            name: "Johnny",
+            product: "Inventor",
+            connectionIP: "555.555.555.555",
+            light: "0,3",
+        },
+    ]
 
     const validateEmail = (em) => {
         const res =
@@ -47,7 +66,7 @@ const LoginScreen = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (!validateEmail(email)) {
+            /*if (!validateEmail(email)) {
                 console.log(!validateEmail(email))
                 return
             }
@@ -63,7 +82,6 @@ const LoginScreen = () => {
                 in temporary redux for state handling. 
             */
             // const userData = await fetch(apiURL)
-            // TODO: Add applicators to redux and secret storage
             if (userData) {
                 dispatch(
                     setEmail(userData.email),
@@ -73,6 +91,12 @@ const LoginScreen = () => {
                 )
                 const jsonValue = JSON.stringify(userData)
                 await SecureStore.setItemAsync("_userData", jsonValue)
+            }
+            // Save the list of all applicators
+            if (userApplicators) {
+                dispatch(setApplicators(userApplicators))
+                const jsonValue = JSON.stringify(userApplicators)
+                await SecureStore.setItemAsync("_userApplicators", jsonValue)
             }
         }
 

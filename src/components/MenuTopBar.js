@@ -8,8 +8,11 @@ import {
 } from "react-native"
 import React from "react"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import { useNavigation } from "@react-navigation/native"
 
-const MenuTopBar = ({ navigation }) => {
+const MenuTopBar = () => {
+    const navigation = useNavigation()
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />

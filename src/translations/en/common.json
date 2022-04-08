@@ -24,5 +24,9 @@
         "invalidPassword": "Password must be at least 12 characters long. ",
         "login": "Log in",
         "register": "Register"
+    },
+    "myapplicators": {
+        "settings": "Settings",
+        "addnewapplicator": "+ New applicator"
     }
 }

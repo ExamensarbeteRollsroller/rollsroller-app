@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet } from "react-native"
 import React, { useEffect, useState } from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { useTranslation } from "react-i18next"
@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "react-redux"
 import HomeScreen from "../screens/HomeScreen"
 import LoginScreen from "../screens/LoginScreen"
 import MyProfileScreen from "../screens/MyProfileScreen"
+import MyApplicatorsStackNavigator from "./MyApplicatorsStackNavigator"
 import ApplicatorsScreen from "../screens/ApplicatorsScreen"
-import MyApplicatorsScreen from "../screens/MyApplicatorsScreen"
 import SupportScreen from "../screens/SupportScreen"
 import SocialmediaScreen from "../screens/SocialmediaScreen"
 import CustomDrawer from "../components/CustomDrawer"
@@ -23,6 +23,7 @@ import {
     setCompany,
     selectEmail,
 } from "../../data/slices/userSlice"
+import { setApplicators } from "../../data/slices/applicatorsSlice"
 
 const DrawerNavigator = () => {
     const Drawer = createDrawerNavigator()
@@ -30,14 +31,11 @@ const DrawerNavigator = () => {
     const dispatch = useDispatch()
     const userEmail = useSelector(selectEmail)
     const [userData, setUserData] = useState("")
-    const [loggedin, setLoggedin] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
             const _userData = await SecureStore.getItemAsync("_userData")
-            if (_userData === null || _userData === "null") {
-                setLoggedin(false)
-            } else {
+            if (_userData !== null && _userData !== "null") {
                 const values = JSON.parse(_userData)
                 dispatch(
                     setEmail(values.email),
@@ -45,11 +43,20 @@ const DrawerNavigator = () => {
                     setLname(values.lname),
                     setCompany(values.company)
                 )
-                setLoggedin(true)
             }
             setUserData(_userData)
         }
+        const fetchApplicators = async () => {
+            const _applicators = await SecureStore.getItemAsync(
+                "_userApplicators"
+            )
+            if (_applicators !== null && _applicators !== "null") {
+                const values = JSON.parse(_applicators)
+                dispatch(setApplicators(values))
+            }
+        }
         fetchData().catch(console.error)
+        fetchApplicators().catch(console.error)
     }, [])
 
     return (
@@ -114,7 +121,7 @@ const DrawerNavigator = () => {
                     {userEmail !== null && (
                         <Drawer.Screen
                             name={t("menu:myapplicators")}
-                            component={MyApplicatorsScreen}
+                            component={MyApplicatorsStackNavigator}
                             options={{
                                 drawerIcon: ({ color }) => (
                                     <MaterialCommunityIcons
