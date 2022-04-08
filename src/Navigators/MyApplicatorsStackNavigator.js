@@ -20,13 +20,17 @@ const MyApplicatorsStackNavigator = () => {
                 name="MyApplicatorsScreen"
                 component={MyApplicatorsScreen}
             />
-            {userApplicators.map((applicator) => (
-                <Stack.Screen
-                    key={applicator.key}
-                    name={applicator.name}
-                    component={CustomApplicatorScreen}
-                />
-            ))}
+            {userApplicators === null ? (
+                <></>
+            ) : (
+                userApplicators.map((applicator) => (
+                    <Stack.Screen
+                        key={applicator.key}
+                        name={applicator.name}
+                        component={CustomApplicatorScreen}
+                    />
+                ))
+            )}
         </Stack.Navigator>
     )
 }

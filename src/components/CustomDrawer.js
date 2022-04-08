@@ -23,6 +23,7 @@ import {
     setCompany,
     selectEmail,
 } from "../../data/slices/userSlice"
+import { setApplicators } from "../../data/slices/applicatorsSlice"
 
 const CustomDrawer = (props) => {
     const { t, i18n } = useTranslation()
@@ -37,6 +38,8 @@ const CustomDrawer = (props) => {
             setLname(null),
             setCompany(null)
         )
+        await SecureStore.setItemAsync("_userApplicators", "null")
+        dispatch(setApplicators(null))
         console.log("logout")
     }
 
