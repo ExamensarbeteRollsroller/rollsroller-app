@@ -9,21 +9,38 @@ import {
 } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import PageTopBar from "../components/PageTopBar"
 import { useTranslation } from "react-i18next"
-
 import { useNavigation } from "@react-navigation/native"
+import { useSelector } from "react-redux"
+
+import PageTopBar from "../components/PageTopBar"
+import { selectTheme } from "../../data/slices/themeSlice"
 
 const ApplicatorsScreen = () => {
     const { t } = useTranslation()
     const navigation = useNavigation()
+    const theme = useSelector(selectTheme)
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+        >
             <PageTopBar title={t("menu:applicators")} />
-            <View style={styles.background}>
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: theme.theme.BACKGROUND_COLOR,
+                }}
+            >
                 <TouchableOpacity
-                    style={[styles.container, styles.line]}
+                    style={[
+                        styles.container,
+                        styles.line,
+                        {
+                            borderBottomColor: theme.theme.LINE_COLOR,
+                            backgroundColor: theme.theme.BACKGROUND_COLOR,
+                        },
+                    ]}
                     onPress={() => {
                         navigation.navigate("InventorScreen")
                     }}
@@ -39,7 +56,14 @@ const ApplicatorsScreen = () => {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.container, styles.line]}
+                    style={[
+                        styles.container,
+                        styles.line,
+                        {
+                            borderBottomColor: theme.theme.LINE_COLOR,
+                            backgroundColor: theme.theme.BACKGROUND_COLOR,
+                        },
+                    ]}
                     onPress={() => {
                         navigation.navigate("PremiumScreen")
                     }}
@@ -55,7 +79,14 @@ const ApplicatorsScreen = () => {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.container, styles.line]}
+                    style={[
+                        styles.container,
+                        styles.line,
+                        {
+                            borderBottomColor: theme.theme.LINE_COLOR,
+                            backgroundColor: theme.theme.BACKGROUND_COLOR,
+                        },
+                    ]}
                     onPress={() => {
                         navigation.navigate("RegularScreen")
                     }}
@@ -71,7 +102,14 @@ const ApplicatorsScreen = () => {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.container, styles.line]}
+                    style={[
+                        styles.container,
+                        styles.line,
+                        {
+                            borderBottomColor: theme.theme.LINE_COLOR,
+                            backgroundColor: theme.theme.BACKGROUND_COLOR,
+                        },
+                    ]}
                     onPress={() => {
                         navigation.navigate("EntryScreen")
                     }}
@@ -94,18 +132,9 @@ const ApplicatorsScreen = () => {
 export default ApplicatorsScreen
 
 const styles = StyleSheet.create({
-    safeArea: {
-        backgroundColor: "#253A70",
-        flex: 1,
-    },
-    background: {
-        backgroundColor: "#fff",
-        flex: 1,
-    },
     container: {
         flex: 1,
         flexDirection: "column",
-        backgroundColor: "#fff",
     },
     textgroup: {
         alignItems: "center",
@@ -121,7 +150,6 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     line: {
-        borderBottomColor: "grey",
         borderBottomWidth: 1,
     },
 })

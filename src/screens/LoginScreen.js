@@ -10,6 +10,8 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 import * as SecureStore from "expo-secure-store"
+import { useSelector } from "react-redux"
+
 import PageTopBar from "../components/PageTopBar"
 import {
     setEmail,
@@ -18,11 +20,13 @@ import {
     setCompany,
 } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
+import { selectTheme } from "../../data/slices/themeSlice"
 import { buttons } from "../../styles/buttons"
 import { input } from "../../styles/input"
 
 const LoginScreen = () => {
     const { t } = useTranslation()
+    const theme = useSelector(selectTheme)
     const [email, onChangeEmail] = useState(t("login:emailplaceholder")) // Pass a valid email and password to not show error windows from the start
     const [password, onChangePassword] = useState(
         t("login:passwordplaceholder")
@@ -109,10 +113,21 @@ const LoginScreen = () => {
     }, [login])
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+        >
             <PageTopBar title={t("menu:login")} />
-            <View style={styles.container}>
-                <Text style={styles.text}>{t("login:emailprompt")}</Text>
+            <View
+                style={[
+                    styles.container,
+                    {
+                        backgroundColor: theme.theme.BACKGROUND_COLOR,
+                    },
+                ]}
+            >
+                <Text style={[styles.text, { color: theme.theme.TEXT_COLOR }]}>
+                    {t("login:emailprompt")}
+                </Text>
                 <TextInput
                     style={[input.textInput, emailFocus && input.focusBorder]}
                     onChangeText={onChangeEmail}
@@ -121,7 +136,7 @@ const LoginScreen = () => {
                     keyboardType="email-address"
                     autoComplete="email"
                     autoCapitalize="none"
-                    selectionColor="#586D9F"
+                    selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
                     selectTextOnFocus={true}
                     blurOnSubmit={true}
                     onSubmitEditing={() => {
@@ -142,7 +157,9 @@ const LoginScreen = () => {
                 >
                     {!validateEmail(email) && t("login:invalidEmail")}
                 </Text>
-                <Text style={styles.text}>{t("login:passwordprompt")}</Text>
+                <Text style={[styles.text, { color: theme.theme.TEXT_COLOR }]}>
+                    {t("login:passwordprompt")}
+                </Text>
                 <TextInput
                     style={[
                         input.textInput,
@@ -154,7 +171,7 @@ const LoginScreen = () => {
                     textContentType="password"
                     autoComplete="password"
                     autoCapitalize="none"
-                    selectionColor="#586D9F"
+                    selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
                     selectTextOnFocus={true}
                     secureTextEntry={true}
                     blurOnSubmit={true}
@@ -183,7 +200,7 @@ const LoginScreen = () => {
                             onLoginPress(true)
                             console.log(t("login:login"))
                         }}
-                        underlayColor="#3b5591"
+                        underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}
                     >
                         <Text style={buttons.buttonText}>
@@ -195,7 +212,7 @@ const LoginScreen = () => {
                         onPress={() => {
                             console.log(t("login:register"))
                         }}
-                        underlayColor="#3b5591"
+                        underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}
                     >
                         <Text style={buttons.buttonText}>
@@ -211,12 +228,8 @@ const LoginScreen = () => {
 export default LoginScreen
 
 const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-    },
     container: {
         flex: 1,
-        backgroundColor: "#fff",
         alignItems: "center",
         paddingTop: 56,
     },

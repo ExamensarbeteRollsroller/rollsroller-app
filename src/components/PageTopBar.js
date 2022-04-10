@@ -7,13 +7,28 @@ import {
 } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import { useSelector } from "react-redux"
+import { selectTheme } from "../../data/slices/themeSlice"
 
 const Topbar = ({ title }) => {
     const navigation = useNavigation()
+    const theme = useSelector(selectTheme)
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor="#1b2a58" />
+        <View
+            style={[
+                styles.container,
+                { backgroundColor: theme.theme.PRIMARY_COLOR },
+            ]}
+        >
+            <StatusBar
+                barStyle={
+                    theme.theme.MODE === "LIGHT"
+                        ? "light-content"
+                        : "dark-content"
+                }
+                backgroundColor={theme.theme.DARK_PRIMARY_COLOR}
+            />
             <TouchableOpacity
                 style={styles.iconButton}
                 onPress={() => {
@@ -25,7 +40,7 @@ const Topbar = ({ title }) => {
                 <MaterialCommunityIcons
                     name="keyboard-backspace"
                     size={24}
-                    color={"white"}
+                    color={theme.theme.BUTTON_TEXT_COLOR}
                 />
             </TouchableOpacity>
             <Text style={styles.text}>{title}</Text>
@@ -38,7 +53,6 @@ export default Topbar
 const styles = StyleSheet.create({
     container: {
         height: 56,
-        backgroundColor: "#253A70",
         flexDirection: "row",
         alignItems: "center",
         padding: 0,
