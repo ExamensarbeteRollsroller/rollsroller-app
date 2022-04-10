@@ -24,6 +24,7 @@ import {
     selectEmail,
 } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
+import { buttons } from "../../styles/buttons"
 
 const CustomDrawer = (props) => {
     const { t, i18n } = useTranslation()
@@ -61,7 +62,7 @@ const CustomDrawer = (props) => {
             </DrawerContentScrollView>
             <View style={styles.footer}>
                 <TouchableHighlight
-                    style={styles.languageButton}
+                    style={buttons.buttonDynamic}
                     onPress={() => {
                         if (i18n.language === "en") i18n.changeLanguage("sv")
                         else i18n.changeLanguage("en")
@@ -70,7 +71,7 @@ const CustomDrawer = (props) => {
                     underlayColor="#3b5591"
                     activeOpacity={1}
                 >
-                    <Text style={styles.languageButtonText}>
+                    <Text style={buttons.buttonText}>
                         {t("menu:changeLang")}
                     </Text>
                 </TouchableHighlight>
@@ -132,23 +133,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 4,
         color: "red",
-    },
-    languageButton: {
-        backgroundColor: "#253A70",
-        alignItems: "center",
-        borderRadius: 6,
-        marginTop: 16,
-        padding: 8,
-        paddingLeft: 16,
-        paddingRight: 16,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 4,
-    },
-    languageButtonText: {
-        fontSize: 16,
-        color: "#FFFFFF",
     },
 })

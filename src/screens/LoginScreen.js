@@ -18,6 +18,8 @@ import {
     setCompany,
 } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
+import { buttons } from "../../styles/buttons"
+import { input } from "../../styles/input"
 
 const LoginScreen = () => {
     const { t } = useTranslation()
@@ -112,7 +114,7 @@ const LoginScreen = () => {
             <View style={styles.container}>
                 <Text style={styles.text}>{t("login:emailprompt")}</Text>
                 <TextInput
-                    style={[styles.textInput, emailFocus && styles.focusBorder]}
+                    style={[input.textInput, emailFocus && input.focusBorder]}
                     onChangeText={onChangeEmail}
                     placeholder={t("login:emailplaceholder")}
                     textContentType="emailAddress"
@@ -134,8 +136,8 @@ const LoginScreen = () => {
                 />
                 <Text
                     style={[
-                        !validateEmail(email) && styles.errorTextInvalid,
-                        styles.errorText,
+                        !validateEmail(email) && input.errorTextInvalid,
+                        input.errorText,
                     ]}
                 >
                     {!validateEmail(email) && t("login:invalidEmail")}
@@ -143,8 +145,8 @@ const LoginScreen = () => {
                 <Text style={styles.text}>{t("login:passwordprompt")}</Text>
                 <TextInput
                     style={[
-                        styles.textInput,
-                        passwordFocus && styles.focusBorder,
+                        input.textInput,
+                        passwordFocus && input.focusBorder,
                     ]}
                     onChangeText={onChangePassword}
                     placeholder={t("login:passwordplaceholder")}
@@ -168,15 +170,15 @@ const LoginScreen = () => {
                 />
                 <Text
                     style={[
-                        !validatePassword(password) && styles.errorTextInvalid,
-                        styles.errorText,
+                        !validatePassword(password) && input.errorTextInvalid,
+                        input.errorText,
                     ]}
                 >
                     {!validatePassword(password) && t("login:invalidPassword")}
                 </Text>
                 <View style={styles.buttongroup}>
                     <TouchableHighlight
-                        style={styles.button}
+                        style={buttons.buttonStatic}
                         onPress={() => {
                             onLoginPress(true)
                             console.log(t("login:login"))
@@ -184,19 +186,19 @@ const LoginScreen = () => {
                         underlayColor="#3b5591"
                         activeOpacity={1}
                     >
-                        <Text style={styles.buttonText}>
+                        <Text style={buttons.buttonText}>
                             {t("login:login")}
                         </Text>
                     </TouchableHighlight>
                     <TouchableHighlight
-                        style={styles.button}
+                        style={buttons.buttonStatic}
                         onPress={() => {
                             console.log(t("login:register"))
                         }}
                         underlayColor="#3b5591"
                         activeOpacity={1}
                     >
-                        <Text style={styles.buttonText}>
+                        <Text style={buttons.buttonText}>
                             {t("login:register")}
                         </Text>
                     </TouchableHighlight>
@@ -226,50 +228,9 @@ const styles = StyleSheet.create({
         width: "80%",
         alignContent: "flex-start",
     },
-    textInput: {
-        width: "80%",
-        fontSize: 20,
-        padding: 15,
-        backgroundColor: "#E5E5E5",
-        borderRadius: 6,
-        borderWidth: 1,
-        borderColor: "#fff",
-    },
-    focusBorder: {
-        borderColor: "#000",
-    },
-    errorTextInvalid: {
-        backgroundColor: "rgba(255, 0, 0, 0.3)",
-    },
-    errorText: {
-        width: "80%",
-        textAlign: "center",
-        borderRadius: 6,
-        padding: 8,
-        marginTop: 4,
-        fontSize: 16,
-        fontWeight: "700",
-    },
     buttongroup: {
         marginTop: 56,
         width: "100%",
         alignItems: "center",
-    },
-    button: {
-        width: "60%",
-        backgroundColor: "#253A70",
-        alignItems: "center",
-        borderRadius: 6,
-        marginTop: 20,
-        padding: 8,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 4,
-    },
-    buttonText: {
-        fontSize: 16,
-        color: "#FFFFFF",
     },
 })
