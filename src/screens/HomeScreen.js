@@ -2,15 +2,26 @@ import { StyleSheet, Text, View, StatusBar } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
 import YoutubePlayer from "react-native-youtube-iframe"
+import { useSelector } from "react-redux"
+
 import MenuTopBar from "../components/MenuTopBar"
+import { selectTheme } from "../../data/slices/themeSlice"
 
 const HomeScreen = () => {
     const { t } = useTranslation()
+    const theme = useSelector(selectTheme)
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+        >
             <MenuTopBar />
-            <View style={styles.container}>
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: theme.theme.BACKGROUND_COLOR,
+                }}
+            >
                 <View style={styles.video}>
                     <YoutubePlayer
                         height={300}
@@ -19,8 +30,17 @@ const HomeScreen = () => {
                     />
                 </View>
                 <View style={styles.buttongroup}>
-                    <Text style={styles.text}>{t("startscreen:welcome")}</Text>
-                    <Text style={styles.breadText}>
+                    <Text
+                        style={[styles.text, { color: theme.theme.TEXT_COLOR }]}
+                    >
+                        {t("startscreen:welcome")}
+                    </Text>
+                    <Text
+                        style={[
+                            styles.breadText,
+                            { color: theme.theme.TEXT_COLOR },
+                        ]}
+                    >
                         {t("startscreen:lorem")}
                     </Text>
                 </View>
@@ -32,14 +52,6 @@ const HomeScreen = () => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
-    safeArea: {
-        backgroundColor: "#253A70",
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
     buttongroup: {
         alignItems: "center",
     },

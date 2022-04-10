@@ -24,11 +24,14 @@ import {
     selectEmail,
 } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
+import { buttons } from "../../styles/buttons"
+import { switchTheme, selectTheme } from "../../data/slices/themeSlice"
 
 const CustomDrawer = (props) => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
     const userEmail = useSelector(selectEmail)
+    const theme = useSelector(selectTheme)
 
     const handleLogout = async () => {
         await SecureStore.setItemAsync("_userData", "null")
@@ -47,7 +50,9 @@ const CustomDrawer = (props) => {
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView
                 {...props}
-                contentContainerStyle={{ backgroundColor: "#253A70" }}
+                contentContainerStyle={{
+                    backgroundColor: theme.theme.PRIMARY_COLOR,
+                }}
             >
                 <View style={styles.header}>
                     <Image
@@ -55,22 +60,32 @@ const CustomDrawer = (props) => {
                         style={styles.logo}
                     />
                 </View>
-                <View style={styles.draweritemlist}>
+                <View
+                    style={[
+                        styles.draweritemlist,
+                        { backgroundColor: theme.theme.BACKGROUND_COLOR },
+                    ]}
+                >
                     <DrawerItemList {...props} />
                 </View>
             </DrawerContentScrollView>
-            <View style={styles.footer}>
+            <View
+                style={[
+                    styles.footer,
+                    { borderTopColor: theme.theme.LINE_COLOR },
+                ]}
+            >
                 <TouchableHighlight
-                    style={styles.languageButton}
+                    style={buttons.buttonDynamic}
                     onPress={() => {
                         if (i18n.language === "en") i18n.changeLanguage("sv")
                         else i18n.changeLanguage("en")
                         console.log(t("menu:changeLang"))
                     }}
-                    underlayColor="#3b5591"
+                    underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                     activeOpacity={1}
                 >
-                    <Text style={styles.languageButtonText}>
+                    <Text style={buttons.buttonText}>
                         {t("menu:changeLang")}
                     </Text>
                 </TouchableHighlight>
@@ -85,9 +100,14 @@ const CustomDrawer = (props) => {
                             <Ionicons
                                 name="log-out-outline"
                                 size={16}
-                                color="#ff0000"
+                                color={theme.theme.ERROR_COLOR}
                             />
-                            <Text style={styles.logouttext}>
+                            <Text
+                                style={[
+                                    styles.logouttext,
+                                    { color: theme.theme.ERROR_COLOR },
+                                ]}
+                            >
                                 {t("menu:logout")}
                             </Text>
                         </View>
@@ -111,13 +131,11 @@ const styles = StyleSheet.create({
         width: 478 / 2,
     },
     draweritemlist: {
-        backgroundColor: "#fff",
         paddingTop: 8,
     },
     footer: {
         padding: 16,
         borderTopWidth: 1,
-        borderTopColor: "#ccc",
         alignItems: "flex-start",
     },
     logoutbutton: {
@@ -131,24 +149,5 @@ const styles = StyleSheet.create({
     logouttext: {
         fontSize: 16,
         marginLeft: 4,
-        color: "red",
-    },
-    languageButton: {
-        backgroundColor: "#253A70",
-        alignItems: "center",
-        borderRadius: 6,
-        marginTop: 16,
-        padding: 8,
-        paddingLeft: 16,
-        paddingRight: 16,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 4,
-    },
-    languageButtonText: {
-        fontSize: 16,
-        color: "#FFFFFF",
     },
 })

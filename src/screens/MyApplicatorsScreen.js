@@ -17,11 +17,14 @@ import Entry from "../../assets/images/Entry.jpg"
 import Regular from "../../assets/images/Regular.jpg"
 import Premium from "../../assets/images/Premium.jpg"
 import Inventor from "../../assets/images/Inventor.png"
+import { buttons } from "../../styles/buttons"
+import { selectTheme } from "../../data/slices/themeSlice"
 
 const MyApplicatorsScreen = () => {
     const { t } = useTranslation()
     const navigation = useNavigation()
     const userApplicators = useSelector(selectApplicators)
+    const theme = useSelector(selectTheme)
 
     const imagePaths = {
         Entry: Entry,
@@ -33,15 +36,28 @@ const MyApplicatorsScreen = () => {
     const path = "../../assets/images/Entry.jpg"
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+        >
             <PageTopBar title={t("menu:myapplicators")} />
-            <ScrollView style={styles.itemContainer}>
+            <ScrollView
+                style={[
+                    styles.itemContainer,
+                    { backgroundColor: theme.theme.BACKGROUND_COLOR },
+                ]}
+            >
                 {userApplicators === null ? (
                     <></>
                 ) : (
                     userApplicators.map((applicator) => (
                         <View
-                            style={[styles.item, styles.line]}
+                            style={[
+                                styles.item,
+                                {
+                                    borderBottomWidth: 1,
+                                    borderBottomColor: theme.theme.LINE_COLOR,
+                                },
+                            ]}
                             key={applicator.key}
                         >
                             <Text style={styles.text}>{applicator.name}</Text>
@@ -50,7 +66,7 @@ const MyApplicatorsScreen = () => {
                                 style={styles.image}
                             />
                             <TouchableHighlight
-                                style={styles.button}
+                                style={buttons.buttonDynamic}
                                 onPress={() => {
                                     navigation.navigate(applicator.name, {
                                         key: applicator.key,
@@ -61,10 +77,10 @@ const MyApplicatorsScreen = () => {
                                     })
                                     console.log(t("myapplicators:settings"))
                                 }}
-                                underlayColor="#3b5591"
+                                underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                                 activeOpacity={1}
                             >
-                                <Text style={styles.buttonText}>
+                                <Text style={buttons.buttonText}>
                                     {t("myapplicators:settings")}
                                 </Text>
                             </TouchableHighlight>
@@ -73,14 +89,14 @@ const MyApplicatorsScreen = () => {
                 )}
                 <View style={styles.item}>
                     <TouchableHighlight
-                        style={styles.button}
+                        style={buttons.buttonDynamic}
                         onPress={() => {
                             console.log(t("myapplicators:addnewapplicator"))
                         }}
                         underlayColor="#3b5591"
                         activeOpacity={1}
                     >
-                        <Text style={styles.buttonText}>
+                        <Text style={buttons.buttonText}>
                             {t("myapplicators:addnewapplicator")}
                         </Text>
                     </TouchableHighlight>
@@ -93,22 +109,13 @@ const MyApplicatorsScreen = () => {
 export default MyApplicatorsScreen
 
 const styles = StyleSheet.create({
-    safeArea: {
-        backgroundColor: "#253A70",
-        flex: 1,
-    },
     itemContainer: {
         flex: 1,
         flexDirection: "column",
-        backgroundColor: "#fff",
     },
     item: {
         alignItems: "center",
         padding: 12,
-    },
-    line: {
-        borderBottomWidth: 1,
-        borderBottomColor: "#000",
     },
     text: {
         fontSize: 20,
@@ -119,23 +126,5 @@ const styles = StyleSheet.create({
     image: {
         height: 150,
         resizeMode: "contain",
-    },
-    button: {
-        backgroundColor: "#253A70",
-        alignItems: "center",
-        borderRadius: 6,
-        marginTop: 16,
-        padding: 8,
-        paddingLeft: 16,
-        paddingRight: 16,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 4,
-    },
-    buttonText: {
-        fontSize: 16,
-        color: "#FFFFFF",
     },
 })

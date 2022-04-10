@@ -1,16 +1,27 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import PageTopBar from "../../components/PageTopBar"
 import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
+
+import { selectTheme } from "../../../data/slices/themeSlice"
+import PageTopBar from "../../components/PageTopBar"
 
 const RegularScreen = () => {
     const { t } = useTranslation()
+    const theme = useSelector(selectTheme)
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+        >
             <PageTopBar title={t("applicators:regular")} />
-            <View style={styles.container}>
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: theme.theme.BACKGROUND_COLOR,
+                }}
+            >
                 <View style={styles.buttongroup}>
                     <Text style={styles.text}>{t("applicators:regular")}</Text>
                 </View>
@@ -21,14 +32,6 @@ const RegularScreen = () => {
 export default RegularScreen
 
 const styles = StyleSheet.create({
-    safeArea: {
-        backgroundColor: "#253A70",
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
     buttongroup: {
         marginTop: 100,
         alignItems: "center",

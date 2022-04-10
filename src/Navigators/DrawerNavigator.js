@@ -11,7 +11,6 @@ import HomeScreen from "../screens/HomeScreen"
 import LoginScreen from "../screens/LoginScreen"
 import MyProfileScreen from "../screens/MyProfileScreen"
 import MyApplicatorsStackNavigator from "./MyApplicatorsStackNavigator"
-import ApplicatorsScreen from "../screens/ApplicatorsScreen"
 import SupportScreen from "../screens/SupportScreen"
 import SocialmediaScreen from "../screens/SocialmediaScreen"
 import CustomDrawer from "../components/CustomDrawer"
@@ -25,6 +24,7 @@ import {
     selectEmail,
 } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
+import { selectTheme } from "../../data/slices/themeSlice"
 
 const DrawerNavigator = () => {
     const Drawer = createDrawerNavigator()
@@ -32,6 +32,7 @@ const DrawerNavigator = () => {
     const dispatch = useDispatch()
     const userEmail = useSelector(selectEmail)
     const [userData, setUserData] = useState("")
+    const theme = useSelector(selectTheme)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -67,8 +68,9 @@ const DrawerNavigator = () => {
                 <Drawer.Navigator
                     screenOptions={{
                         headerShown: false,
-                        drawerActiveBackgroundColor: "#586d9f",
-                        drawerActiveTintColor: "#fff",
+                        drawerActiveBackgroundColor:
+                            theme.theme.ACTIVE_COMPONENT_COLOR,
+                        drawerActiveTintColor: theme.theme.BUTTON_TEXT_COLOR,
                         drawerLabelStyle: {
                             marginLeft: -20,
                             fontSize: 15,
