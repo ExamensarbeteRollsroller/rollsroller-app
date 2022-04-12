@@ -3,6 +3,7 @@ import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import MyApplicatorsScreen from "../screens/MyApplicatorsScreen"
 import CustomApplicatorScreen from "../screens/CustomApplicatorScreen"
+import ConnectionApplicatorScreen from "../screens/ConnectionApplicatorScreen"
 import { useSelector } from "react-redux"
 import { selectApplicators } from "../../data/slices/applicatorsSlice"
 
@@ -26,8 +27,19 @@ const MyApplicatorsStackNavigator = () => {
                 userApplicators.map((applicator) => (
                     <Stack.Screen
                         key={applicator.key}
-                        name={applicator.name}
+                        name={applicator.name + "SettingScreen"}
                         component={CustomApplicatorScreen}
+                    />
+                ))
+            )}
+            {userApplicators === null ? (
+                <></>
+            ) : (
+                userApplicators.map((applicator) => (
+                    <Stack.Screen
+                        key={applicator.key}
+                        name={applicator.name + "ConnectionScreen"}
+                        component={ConnectionApplicatorScreen}
                     />
                 ))
             )}

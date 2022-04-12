@@ -12,8 +12,13 @@
         "applicators": "Applikatorbord",
         "support": "Kundtjänst",
         "socialmedia": "Sociala Medier",
-        "changeLang": "Byt språk",
+        "changelang": "Byt språk",
         "logout": "Logga ut"
+    },
+    "languageselection": {
+        "chooselang": "Välj språk",
+        "english": "Engelska",
+        "swedish": "Svenska"
     },
     "login": {
         "emailprompt": "Mejladress:",
@@ -27,7 +32,24 @@
     },
     "myapplicators": {
         "settings": "Inställningar",
-        "addnewapplicator": "+ Ny applikator"
+        "addnewapplicator": "+ Ny applikator",
+        "connect": "Anslut"
+    },
+    "myapplicatorsettings": {
+        "settingstitle": "Inställningar för "
+    },
+    "connection": {
+        "connect": "Anslut",
+        "disconnect": "Koppla från",
+        "connected": "Ansluten",
+        "connecting": "Ansluter ",
+        "disconnected": "Frånkopplad",
+        "tooltip": "Håll inne för att flytta:",
+        "moveroller": "Flytta rollern",
+        "movingroller": "Flyttar rollern",
+        "modaltitle": "Error",
+        "modaltext": "Kunde inte ansluta till applikatorn. Kolla om den är på och om rätt IP är sparad. ",
+        "modalbuttontext": "Stäng"
     },
     "applicators": {
         "inventor": "Inventor Edition",
