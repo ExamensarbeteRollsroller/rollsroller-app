@@ -48,14 +48,14 @@ const LoginScreen = () => {
             key: 1,
             name: "Gertrud",
             product: "Entry",
-            connectionIP: "555.555.555.555",
+            connectionIP: "192.168.50.88",
             light: "0,8",
         },
         {
             key: 2,
             name: "Johnny",
             product: "Inventor",
-            connectionIP: "555.555.555.555",
+            connectionIP: "192.168.50.88",
             light: "0,3",
         },
     ]

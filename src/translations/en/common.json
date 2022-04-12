@@ -12,8 +12,13 @@
         "applicators": "Applicators",
         "support": "Support",
         "socialmedia": "Social Media",
-        "changeLang": "Change language",
+        "changelang": "Change language",
         "logout": "Log out"
+    },
+    "languageselection": {
+        "chooselang": "Choose Language",
+        "english": "English",
+        "swedish": "Swedish"
     },
     "login": {
         "emailprompt": "Email:",
@@ -27,7 +32,24 @@
     },
     "myapplicators": {
         "settings": "Settings",
+        "connect": "Connect",
         "addnewapplicator": "+ New applicator"
+    },
+    "myapplicatorsettings": {
+        "settingstitle": "Settings for "
+    },
+    "connection": {
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "connected": "Connected",
+        "connecting": "Connecting ",
+        "disconnected": "Disconnected",
+        "tooltip": "Hold to move:",
+        "moveroller": "Move roller",
+        "movingroller": "Moving roller",
+        "modaltitle": "Error",
+        "modaltext": "Could not connect to the applicator. Check it is turned on and if the IP is correct. ",
+        "modalbuttontext": "Close"
     },
     "applicators": {
         "inventor": "Inventor Edition",

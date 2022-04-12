@@ -5,6 +5,7 @@ const buttons = StyleSheet.create({
         fontSize: 16,
         color: "#FFFFFF",
     },
+    buttonTextLarge: { fontSize: 20 },
     buttonDynamic: {
         backgroundColor: "#253A70",
         alignItems: "center",
@@ -18,6 +19,8 @@ const buttons = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 4,
+        height: 48,
+        justifyContent: "center",
     },
     buttonStatic: {
         backgroundColor: "#253A70",
@@ -31,7 +34,10 @@ const buttons = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 4,
+        height: 48,
+        justifyContent: "center",
     },
+    large: { height: 100 },
 })
 
 export { buttons }

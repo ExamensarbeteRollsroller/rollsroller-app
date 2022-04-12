@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     iconButton: {
         height: 56,
         width: 56,
-        paddingLeft: 14,
+        paddingLeft: 16,
         justifyContent: "center",
     },
     text: {

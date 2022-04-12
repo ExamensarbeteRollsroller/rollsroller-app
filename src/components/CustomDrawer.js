@@ -26,12 +26,14 @@ import {
 import { setApplicators } from "../../data/slices/applicatorsSlice"
 import { buttons } from "../../styles/buttons"
 import { switchTheme, selectTheme } from "../../data/slices/themeSlice"
+import LanguageModal from "./LanguageModal"
 
 const CustomDrawer = (props) => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
     const userEmail = useSelector(selectEmail)
     const theme = useSelector(selectTheme)
+    const [modalVisibility, setModalVisibility] = useState(false)
 
     const handleLogout = async () => {
         await SecureStore.setItemAsync("_userData", "null")
@@ -78,15 +80,14 @@ const CustomDrawer = (props) => {
                 <TouchableHighlight
                     style={buttons.buttonDynamic}
                     onPress={() => {
-                        if (i18n.language === "en") i18n.changeLanguage("sv")
-                        else i18n.changeLanguage("en")
-                        console.log(t("menu:changeLang"))
+                        console.log(t("menu:changelang"))
+                        setModalVisibility(!modalVisibility)
                     }}
                     underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                     activeOpacity={1}
                 >
                     <Text style={buttons.buttonText}>
-                        {t("menu:changeLang")}
+                        {t("menu:changelang")}
                     </Text>
                 </TouchableHighlight>
                 {userEmail !== null && (
@@ -114,6 +115,10 @@ const CustomDrawer = (props) => {
                     </TouchableOpacity>
                 )}
             </View>
+            <LanguageModal
+                modalVisibility={modalVisibility}
+                setModalVisibility={setModalVisibility}
+            />
         </View>
     )
 }

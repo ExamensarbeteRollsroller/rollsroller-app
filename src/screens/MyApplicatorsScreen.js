@@ -8,10 +8,11 @@ import {
 } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import PageTopBar from "../components/PageTopBar"
 import { useTranslation } from "react-i18next"
 import { useNavigation } from "@react-navigation/native"
 import { useSelector } from "react-redux"
+
+import PageTopBar from "../components/PageTopBar"
 import { selectApplicators } from "../../data/slices/applicatorsSlice"
 import Entry from "../../assets/images/Entry.jpg"
 import Regular from "../../assets/images/Regular.jpg"
@@ -32,8 +33,6 @@ const MyApplicatorsScreen = () => {
         Premium: Premium,
         Inventor: Inventor,
     }
-
-    const path = "../../assets/images/Entry.jpg"
 
     return (
         <SafeAreaView
@@ -65,25 +64,62 @@ const MyApplicatorsScreen = () => {
                                 source={imagePaths[applicator.product]}
                                 style={styles.image}
                             />
-                            <TouchableHighlight
-                                style={buttons.buttonDynamic}
-                                onPress={() => {
-                                    navigation.navigate(applicator.name, {
-                                        key: applicator.key,
-                                        name: applicator.name,
-                                        product: applicator.product,
-                                        connectionIP: applicator.connectionIP,
-                                        light: applicator.light,
-                                    })
-                                    console.log(t("myapplicators:settings"))
-                                }}
-                                underlayColor={theme.theme.BUTTON_PRESS_COLOR}
-                                activeOpacity={1}
-                            >
-                                <Text style={buttons.buttonText}>
-                                    {t("myapplicators:settings")}
-                                </Text>
-                            </TouchableHighlight>
+                            <View style={styles.buttonGroup}>
+                                <TouchableHighlight
+                                    style={[
+                                        buttons.buttonDynamic,
+                                        { marginRight: 16 },
+                                    ]}
+                                    onPress={() => {
+                                        navigation.navigate(
+                                            applicator.name + "SettingScreen",
+                                            {
+                                                key: applicator.key,
+                                                name: applicator.name,
+                                                product: applicator.product,
+                                                connectionIP:
+                                                    applicator.connectionIP,
+                                                light: applicator.light,
+                                            }
+                                        )
+                                        console.log(t("myapplicators:settings"))
+                                    }}
+                                    underlayColor={
+                                        theme.theme.BUTTON_PRESS_COLOR
+                                    }
+                                    activeOpacity={1}
+                                >
+                                    <Text style={buttons.buttonText}>
+                                        {t("myapplicators:settings")}
+                                    </Text>
+                                </TouchableHighlight>
+                                <TouchableHighlight
+                                    style={buttons.buttonDynamic}
+                                    onPress={() => {
+                                        navigation.navigate(
+                                            applicator.name +
+                                                "ConnectionScreen",
+                                            {
+                                                key: applicator.key,
+                                                name: applicator.name,
+                                                product: applicator.product,
+                                                connectionIP:
+                                                    applicator.connectionIP,
+                                                light: applicator.light,
+                                            }
+                                        )
+                                        console.log(t("myapplicators:connect"))
+                                    }}
+                                    underlayColor={
+                                        theme.theme.BUTTON_PRESS_COLOR
+                                    }
+                                    activeOpacity={1}
+                                >
+                                    <Text style={buttons.buttonText}>
+                                        {t("myapplicators:connect")}
+                                    </Text>
+                                </TouchableHighlight>
+                            </View>
                         </View>
                     ))
                 )}
@@ -93,7 +129,7 @@ const MyApplicatorsScreen = () => {
                         onPress={() => {
                             console.log(t("myapplicators:addnewapplicator"))
                         }}
-                        underlayColor="#3b5591"
+                        underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}
                     >
                         <Text style={buttons.buttonText}>
@@ -115,7 +151,7 @@ const styles = StyleSheet.create({
     },
     item: {
         alignItems: "center",
-        padding: 12,
+        padding: 16,
     },
     text: {
         fontSize: 20,
@@ -126,5 +162,8 @@ const styles = StyleSheet.create({
     image: {
         height: 150,
         resizeMode: "contain",
+    },
+    buttonGroup: {
+        flexDirection: "row",
     },
 })
