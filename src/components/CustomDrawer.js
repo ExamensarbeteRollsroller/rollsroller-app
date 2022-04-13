@@ -13,7 +13,7 @@ import {
     DrawerItemList,
 } from "@react-navigation/drawer"
 import { useTranslation } from "react-i18next"
-import Ionicons from "react-native-vector-icons/Ionicons"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import * as SecureStore from "expo-secure-store"
 import { useDispatch, useSelector } from "react-redux"
 import {
@@ -29,7 +29,7 @@ import { switchTheme, selectTheme } from "../../data/slices/themeSlice"
 import LanguageModal from "./LanguageModal"
 
 const CustomDrawer = (props) => {
-    const { t, i18n } = useTranslation()
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const userEmail = useSelector(selectEmail)
     const theme = useSelector(selectTheme)
@@ -98,8 +98,8 @@ const CustomDrawer = (props) => {
                         style={styles.logoutbutton}
                     >
                         <View style={styles.logout}>
-                            <Ionicons
-                                name="log-out-outline"
+                            <MaterialIcons
+                                name="logout"
                                 size={16}
                                 color={theme.theme.ERROR_COLOR}
                             />

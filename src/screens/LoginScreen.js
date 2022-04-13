@@ -8,9 +8,8 @@ import {
 import React, { useState, useEffect, useRef } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import * as SecureStore from "expo-secure-store"
-import { useSelector } from "react-redux"
 
 import PageTopBar from "../components/PageTopBar"
 import {
@@ -49,14 +48,14 @@ const LoginScreen = () => {
             name: "Gertrud",
             product: "Entry",
             connectionIP: "192.168.50.88",
-            light: "0,8",
+            light: "0.8",
         },
         {
             key: 2,
             name: "Johnny",
             product: "Inventor",
             connectionIP: "192.168.50.88",
-            light: "0,3",
+            light: "0.3",
         },
     ]
 
@@ -125,75 +124,86 @@ const LoginScreen = () => {
                     },
                 ]}
             >
-                <Text style={[styles.text, { color: theme.theme.TEXT_COLOR }]}>
-                    {t("login:emailprompt")}
-                </Text>
-                <TextInput
-                    style={[input.textInput, emailFocus && input.focusBorder]}
-                    onChangeText={onChangeEmail}
-                    placeholder={t("login:emailplaceholder")}
-                    textContentType="emailAddress"
-                    keyboardType="email-address"
-                    autoComplete="email"
-                    autoCapitalize="none"
-                    selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
-                    selectTextOnFocus={true}
-                    blurOnSubmit={true}
-                    onSubmitEditing={() => {
-                        passwordInput.current.focus()
-                    }}
-                    onFocus={() => {
-                        setEmailFocus(true)
-                    }}
-                    onBlur={() => {
-                        setEmailFocus(false)
-                    }}
-                />
-                <Text
-                    style={[
-                        !validateEmail(email) && input.errorTextInvalid,
-                        input.errorText,
-                    ]}
-                >
-                    {!validateEmail(email) && t("login:invalidEmail")}
-                </Text>
-                <Text style={[styles.text, { color: theme.theme.TEXT_COLOR }]}>
-                    {t("login:passwordprompt")}
-                </Text>
-                <TextInput
-                    style={[
-                        input.textInput,
-                        passwordFocus && input.focusBorder,
-                    ]}
-                    onChangeText={onChangePassword}
-                    placeholder={t("login:passwordplaceholder")}
-                    ref={passwordInput}
-                    textContentType="password"
-                    autoComplete="password"
-                    autoCapitalize="none"
-                    selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
-                    selectTextOnFocus={true}
-                    secureTextEntry={true}
-                    blurOnSubmit={true}
-                    onSubmitEditing={() => {
-                        onLoginPress(true)
-                    }}
-                    onFocus={() => {
-                        setPasswordFocus(true)
-                    }}
-                    onBlur={() => {
-                        setPasswordFocus(false)
-                    }}
-                />
-                <Text
-                    style={[
-                        !validatePassword(password) && input.errorTextInvalid,
-                        input.errorText,
-                    ]}
-                >
-                    {!validatePassword(password) && t("login:invalidPassword")}
-                </Text>
-                <View style={styles.buttongroup}>
+                <View style={input.inputContainer}>
+                    <Text
+                        style={[input.label, { color: theme.theme.TEXT_COLOR }]}
+                    >
+                        {t("login:emailprompt")}
+                    </Text>
+                    <TextInput
+                        style={[
+                            input.textInput,
+                            emailFocus && input.focusBorder,
+                        ]}
+                        onChangeText={onChangeEmail}
+                        placeholder={t("login:emailplaceholder")}
+                        textContentType="emailAddress"
+                        keyboardType="email-address"
+                        autoComplete="email"
+                        autoCapitalize="none"
+                        selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
+                        selectTextOnFocus={true}
+                        blurOnSubmit={true}
+                        onSubmitEditing={() => {
+                            passwordInput.current.focus()
+                        }}
+                        onFocus={() => {
+                            setEmailFocus(true)
+                        }}
+                        onBlur={() => {
+                            setEmailFocus(false)
+                        }}
+                    />
+                    <Text
+                        style={[
+                            !validateEmail(email) && input.errorTextInvalid,
+                            input.errorText,
+                        ]}
+                    >
+                        {!validateEmail(email) && t("login:invalidEmail")}
+                    </Text>
+                    <Text
+                        style={[input.label, { color: theme.theme.TEXT_COLOR }]}
+                    >
+                        {t("login:passwordprompt")}
+                    </Text>
+                    <TextInput
+                        style={[
+                            input.textInput,
+                            passwordFocus && input.focusBorder,
+                        ]}
+                        onChangeText={onChangePassword}
+                        placeholder={t("login:passwordplaceholder")}
+                        ref={passwordInput}
+                        textContentType="password"
+                        autoComplete="password"
+                        autoCapitalize="none"
+                        selectionColor={theme.theme.ACTIVE_COMPONENT_COLOR}
+                        selectTextOnFocus={true}
+                        secureTextEntry={true}
+                        blurOnSubmit={true}
+                        onSubmitEditing={() => {
+                            onLoginPress(true)
+                        }}
+                        onFocus={() => {
+                            setPasswordFocus(true)
+                        }}
+                        onBlur={() => {
+                            setPasswordFocus(false)
+                        }}
+                    />
+                    <Text
+                        style={[
+                            !validatePassword(password) &&
+                                input.errorTextInvalid,
+                            input.errorText,
+                        ]}
+                    >
+                        {!validatePassword(password) &&
+                            t("login:invalidPassword")}
+                    </Text>
+                </View>
+                <View style={styles.buttonGroup}>
                     <TouchableHighlight
                         style={buttons.buttonStatic}
                         onPress={() => {
@@ -233,15 +243,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingTop: 56,
     },
-    text: {
-        fontSize: 20,
-        fontWeight: "700",
-        marginTop: 16,
-        marginBottom: 4,
-        width: "80%",
-        alignContent: "flex-start",
-    },
-    buttongroup: {
+    buttonGroup: {
         marginTop: 56,
         width: "100%",
         alignItems: "center",
