@@ -36,7 +36,12 @@
         "addnewapplicator": "+ New applicator"
     },
     "myapplicatorsettings": {
-        "settingstitle": "Settings for "
+        "settingstitle": "Settings for ",
+        "name": "Name: ",
+        "product": "Product: ",
+        "connectionip": "IP-address: ",
+        "light": "Light intensity: ",
+        "save": "Save"
     },
     "connection": {
         "connect": "Connect",

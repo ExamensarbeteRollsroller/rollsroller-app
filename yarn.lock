@@ -1267,11 +1267,6 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@miblanchard/react-native-slider@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@miblanchard/react-native-slider/-/react-native-slider-2.1.0.tgz#6249463a9d4aa65dede586637ffe6ca167a9ebf3"
-  integrity sha512-5YRWaQjHl90Ue431RisN+5zr+380L//kWuabzYuo7mVI+CxbHaTQXDr7afkpGgNHCxkkzFlT3tWd+3/QbpgBLQ==
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -1428,6 +1423,11 @@
   version "0.1.11"
   resolved "https://registry.npmjs.org/@react-native-community/masked-view/-/masked-view-0.1.11.tgz"
   integrity sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw==
+
+"@react-native-community/slider@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.2.1.tgz#8f1c8cf62de1bd91ce1e32585f7eb666f21e5025"
+  integrity sha512-6HUS5HbB9bvEN4GiwBlxECgPWQIugHE+kfnxqX2jHUl1SE57MRpw00m1qVs4hXtEPQndBl6mAQiGbKCOtLPVbg==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -4747,6 +4747,11 @@ react-native-codegen@^0.0.6:
     flow-parser "^0.121.0"
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
+
+react-native-element-dropdown@^1.8.7:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/react-native-element-dropdown/-/react-native-element-dropdown-1.8.7.tgz#4eaa1b432857f1150534cb01d739ba83c898db06"
+  integrity sha512-ASaM0fagpDJZ4n/zodCH8SOyiowrmnZ54xZRCTEB3wDm4rBHIEJLXyup+a1Y4Jpg5wj2DZTVE9aF3o5pxukPIQ==
 
 react-native-elements@^3.4.2:
   version "3.4.2"

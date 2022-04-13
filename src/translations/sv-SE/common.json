@@ -36,7 +36,12 @@
         "connect": "Anslut"
     },
     "myapplicatorsettings": {
-        "settingstitle": "Inställningar för "
+        "settingstitle": "Inställningar för ",
+        "name": "Namn: ",
+        "product": "Produkt: ",
+        "connectionip": "IP-adress: ",
+        "light": "Ljusnivå: ",
+        "save": "Spara"
     },
     "connection": {
         "connect": "Anslut",
