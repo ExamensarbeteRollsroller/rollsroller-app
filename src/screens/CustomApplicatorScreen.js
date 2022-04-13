@@ -14,6 +14,7 @@ import * as SecureStore from "expo-secure-store"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import Slider from "@react-native-community/slider"
 import { Dropdown } from "react-native-element-dropdown"
+import { useNavigation } from "@react-navigation/native"
 
 import {
     setApplicators,
@@ -28,6 +29,7 @@ const CustomApplicatorScreen = (props) => {
     const { key, name, product, connectionIP, light } = props.route.params
     const { t } = useTranslation()
     const theme = useSelector(selectTheme)
+    const navigation = useNavigation()
     const [nameInput, onChangeName] = useState(false)
     const [nameFocus, setNameFocus] = useState(false)
     const [connectionIPInput, onChangeConnectionIP] = useState(false)
@@ -51,15 +53,20 @@ const CustomApplicatorScreen = (props) => {
         const saveData = async () => {
             var _userApplicators = []
             const index = userApplicators.findIndex((item) => item.key === key)
+            var stateChange = 0
 
             for (let i = 0; i < userApplicators.length; i++) {
                 if (i !== index) _userApplicators.push(userApplicators[i])
             }
             var applicator = { key: key, product: productValue, light: slider }
-            if (nameInput) applicator.name = nameInput
-            else applicator.name = name
-            if (connectionIPInput) applicator.connectionIP = connectionIPInput
-            else applicator.connectionIP = connectionIP
+            if (nameInput) {
+                applicator.name = nameInput
+                stateChange++
+            } else applicator.name = name
+            if (connectionIPInput) {
+                applicator.connectionIP = connectionIPInput
+                stateChange++
+            } else applicator.connectionIP = connectionIP
             _userApplicators.push(applicator)
 
             dispatch(setApplicators(_userApplicators))
@@ -67,6 +74,7 @@ const CustomApplicatorScreen = (props) => {
             await SecureStore.setItemAsync("_userApplicators", jsonValue)
 
             // Upload the new data to the database.
+            if (stateChange === 0) navigation.goBack()
         }
 
         if (save) {
