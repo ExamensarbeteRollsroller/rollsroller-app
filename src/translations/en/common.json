@@ -41,10 +41,20 @@
         "product": "Product: ",
         "connectionip": "IP-address: ",
         "light": "Light intensity: ",
+        "modaltitle": "Duplicate name",
+        "duplicatetext": "Can not have the same name of applicators. ",
+        "modalconfirmation": "OK",
         "save": "Save"
     },
     "newapplicator": {
-        "title": "New applicator"
+        "title": "New applicator",
+        "nameplaceholder": "Name",
+        "connectionipplaceholder": "xxx.xxx.xxx.xxx",
+        "duplicatemodaltitle": "Duplicate name",
+        "duplicatemodaltext": "Can not have the same name of applicators. ",
+        "emptymodaltitle": "Empty fields",
+        "emptymodaltext": "Must put a value in every field. ",
+        "modalconfirmation": "OK"
     },
     "connection": {
         "connect": "Connect",
