@@ -43,6 +43,9 @@
         "light": "Ljusnivå: ",
         "save": "Spara"
     },
+    "newapplicator": {
+        "title": "Ny applikator"
+    },
     "connection": {
         "connect": "Anslut",
         "disconnect": "Koppla från",

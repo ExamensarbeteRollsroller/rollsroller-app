@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native"
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
+import { useSelector } from "react-redux"
 import MyApplicatorsScreen from "../screens/MyApplicatorsScreen"
 import CustomApplicatorScreen from "../screens/CustomApplicatorScreen"
 import ConnectionApplicatorScreen from "../screens/ConnectionApplicatorScreen"
-import { useSelector } from "react-redux"
+import NewApplicatorScreen from "../screens/NewApplicatorScreen"
 import { selectApplicators } from "../../data/slices/applicatorsSlice"
 
 const MyApplicatorsStackNavigator = () => {
@@ -43,6 +44,10 @@ const MyApplicatorsStackNavigator = () => {
                     />
                 ))
             )}
+            <Stack.Screen
+                name="NewApplicatorScreen"
+                component={NewApplicatorScreen}
+            />
         </Stack.Navigator>
     )
 }

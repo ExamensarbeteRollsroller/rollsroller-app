@@ -213,6 +213,9 @@ const ConnectionApplicatorScreen = (props) => {
             <ErrorModal
                 modalVisibility={modalVisibility}
                 setModalVisibility={setModalVisibility}
+                title={t("connection:modaltitle")}
+                text={t("connection:modaltext")}
+                buttonText={t("connection:modalbuttontext")}
             />
         </SafeAreaView>
     )
