@@ -8,14 +8,18 @@ import {
 } from "react-native"
 import React from "react"
 import { useSelector } from "react-redux"
-import { useTranslation } from "react-i18next"
 
 import { buttons } from "../../styles/buttons"
 import { modal } from "../../styles/modal"
 import { selectTheme } from "../../data/slices/themeSlice"
 
-const ErrorModal = ({ modalVisibility, setModalVisibility }) => {
-    const { t } = useTranslation()
+const ErrorModal = ({
+    modalVisibility,
+    setModalVisibility,
+    title,
+    text,
+    buttonText,
+}) => {
     const theme = useSelector(selectTheme)
 
     return (
@@ -51,12 +55,10 @@ const ErrorModal = ({ modalVisibility, setModalVisibility }) => {
                                 { color: theme.theme.BUTTON_TEXT_COLOR },
                             ]}
                         >
-                            {t("connection:modaltitle")}
+                            {title}
                         </Text>
                     </View>
-                    <Text style={modal.modalText}>
-                        {t("connection:modaltext")}
-                    </Text>
+                    <Text style={modal.modalText}>{text}</Text>
                     <TouchableHighlight
                         style={buttons.buttonDynamic}
                         onPress={() => {
@@ -66,9 +68,7 @@ const ErrorModal = ({ modalVisibility, setModalVisibility }) => {
                         underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}
                     >
-                        <Text style={buttons.buttonText}>
-                            {t("connection:modalbuttontext")}
-                        </Text>
+                        <Text style={buttons.buttonText}>{buttonText}</Text>
                     </TouchableHighlight>
                 </Pressable>
             </Pressable>

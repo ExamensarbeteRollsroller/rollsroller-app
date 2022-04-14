@@ -127,6 +127,7 @@ const MyApplicatorsScreen = () => {
                     <TouchableHighlight
                         style={buttons.buttonDynamic}
                         onPress={() => {
+                            navigation.navigate("NewApplicatorScreen")
                             console.log(t("myapplicators:addnewapplicator"))
                         }}
                         underlayColor={theme.theme.BUTTON_PRESS_COLOR}

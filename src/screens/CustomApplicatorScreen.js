@@ -6,7 +6,7 @@ import {
     TextInput,
     ScrollView,
 } from "react-native"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -24,6 +24,7 @@ import { selectTheme } from "../../data/slices/themeSlice"
 import PageTopBar from "../components/PageTopBar"
 import { buttons } from "../../styles/buttons"
 import { input } from "../../styles/input"
+import ErrorModal from "../components/ErrorModal"
 
 const CustomApplicatorScreen = (props) => {
     const { key, name, product, connectionIP, light } = props.route.params
@@ -32,6 +33,7 @@ const CustomApplicatorScreen = (props) => {
     const navigation = useNavigation()
     const [nameInput, onChangeName] = useState(false)
     const [nameFocus, setNameFocus] = useState(false)
+    const nameRef = useRef(null)
     const [connectionIPInput, onChangeConnectionIP] = useState(false)
     const [connectionIPFocus, setConnectionIPFocus] = useState(false)
     const [productValue, setProductValue] = useState(product)
@@ -39,6 +41,7 @@ const CustomApplicatorScreen = (props) => {
     const [slider, setSlider] = useState(parseFloat(light))
     const [save, onSave] = useState(false)
     const [trash, onTrash] = useState(false)
+    const [duplicate, setDuplicate] = useState(false)
     const userApplicators = useSelector(selectApplicators)
     const dispatch = useDispatch()
 
@@ -49,38 +52,47 @@ const CustomApplicatorScreen = (props) => {
         { name: "Inventor" },
     ]
 
+    const checkDuplicateName = (n) => {
+        for (let i = 0; i < userApplicators.length; i++)
+            if (userApplicators[i].name === n) return true
+        return false
+    }
+
     useEffect(() => {
         const saveData = async () => {
             var _userApplicators = []
             var stateChange = 0
             const index = userApplicators.findIndex((item) => item.key === key)
-
-            for (let i = 0; i < userApplicators.length; i++) {
-                if (i !== index) _userApplicators.push(userApplicators[i])
-                else {
-                    var applicator = {
-                        key: key,
-                        product: productValue,
-                        light: slider,
+            if (checkDuplicateName(nameInput)) {
+                setDuplicate(true)
+            } else {
+                for (let i = 0; i < userApplicators.length; i++) {
+                    if (i !== index) _userApplicators.push(userApplicators[i])
+                    else {
+                        var applicator = {
+                            key: key,
+                            product: productValue,
+                            light: slider,
+                        }
+                        if (nameInput) {
+                            applicator.name = nameInput
+                            stateChange++
+                        } else applicator.name = name
+                        if (connectionIPInput) {
+                            applicator.connectionIP = connectionIPInput
+                            stateChange++
+                        } else applicator.connectionIP = connectionIP
+                        _userApplicators.push(applicator)
                     }
-                    if (nameInput) {
-                        applicator.name = nameInput
-                        stateChange++
-                    } else applicator.name = name
-                    if (connectionIPInput) {
-                        applicator.connectionIP = connectionIPInput
-                        stateChange++
-                    } else applicator.connectionIP = connectionIP
-                    _userApplicators.push(applicator)
                 }
+
+                dispatch(setApplicators(_userApplicators))
+                const jsonValue = JSON.stringify(_userApplicators)
+                await SecureStore.setItemAsync("_userApplicators", jsonValue)
+
+                // Upload the new data to the database.
+                if (stateChange === 0) navigation.goBack()
             }
-
-            dispatch(setApplicators(_userApplicators))
-            const jsonValue = JSON.stringify(_userApplicators)
-            await SecureStore.setItemAsync("_userApplicators", jsonValue)
-
-            // Upload the new data to the database.
-            if (stateChange === 0) navigation.goBack()
         }
 
         if (save) {
@@ -145,6 +157,7 @@ const CustomApplicatorScreen = (props) => {
                                 nameFocus && input.focusBorder,
                             ]}
                             onChangeText={onChangeName}
+                            ref={nameRef}
                             placeholder={
                                 name + "                                       " //Added spaces to make the textInput fill to the sides
                             }
@@ -282,6 +295,13 @@ const CustomApplicatorScreen = (props) => {
                     </TouchableHighlight>
                 </View>
             </View>
+            <ErrorModal
+                modalVisibility={duplicate}
+                setModalVisibility={setDuplicate}
+                title={t("connection:modaltitle")}
+                text="får inte ha duplicate namn"
+                buttonText={t("connection:modalbuttontext")}
+            />
         </SafeAreaView>
     )
 }
