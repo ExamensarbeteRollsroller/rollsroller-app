@@ -5,7 +5,7 @@ import {
     TouchableHighlight,
     Text,
 } from "react-native"
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useTranslation } from "react-i18next"
 import { useDispatch, useSelector } from "react-redux"
@@ -69,9 +69,8 @@ const LoginScreen = () => {
         return pwd.length >= 12
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            /*if (!validateEmail(email)) {
+    const fetchData = async () => {
+        /*if (!validateEmail(email)) {
                 console.log(!validateEmail(email))
                 return
             }
@@ -86,30 +85,24 @@ const LoginScreen = () => {
                 If user is valid; credentials are added in local secret storage and
                 in temporary redux for state handling. 
             */
-            // const userData = await fetch(apiURL)
-            if (userData) {
-                dispatch(
-                    setEmail(userData.email),
-                    setFname(userData.fname),
-                    setLname(userData.lname),
-                    setCompany(userData.company)
-                )
-                const jsonValue = JSON.stringify(userData)
-                await SecureStore.setItemAsync("_userData", jsonValue)
-            }
-            // Save the list of all applicators
-            if (userApplicators) {
-                dispatch(setApplicators(userApplicators))
-                const jsonValue = JSON.stringify(userApplicators)
-                await SecureStore.setItemAsync("_userApplicators", jsonValue)
-            }
+        // const userData = await fetch(apiURL)
+        if (userData) {
+            dispatch(
+                setEmail(userData.email),
+                setFname(userData.fname),
+                setLname(userData.lname),
+                setCompany(userData.company)
+            )
+            const jsonValue = JSON.stringify(userData)
+            await SecureStore.setItemAsync("_userData", jsonValue)
         }
-
-        if (login) {
-            fetchData()
+        // Save the list of all applicators
+        if (userApplicators) {
+            dispatch(setApplicators(userApplicators))
+            const jsonValue = JSON.stringify(userApplicators)
+            await SecureStore.setItemAsync("_userApplicators", jsonValue)
         }
-        onLoginPress(false)
-    }, [login])
+    }
 
     return (
         <SafeAreaView
@@ -183,7 +176,7 @@ const LoginScreen = () => {
                         secureTextEntry={true}
                         blurOnSubmit={true}
                         onSubmitEditing={() => {
-                            onLoginPress(true)
+                            fetchData()
                         }}
                         onFocus={() => {
                             setPasswordFocus(true)
@@ -207,7 +200,7 @@ const LoginScreen = () => {
                     <TouchableHighlight
                         style={buttons.buttonStatic}
                         onPress={() => {
-                            onLoginPress(true)
+                            fetchData()
                             console.log(t("login:login"))
                         }}
                         underlayColor={theme.theme.BUTTON_PRESS_COLOR}

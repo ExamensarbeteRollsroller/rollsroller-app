@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native"
-import React, { useEffect, useState } from "react"
+import { StyleSheet } from "react-native"
+import React from "react"
 import ApplicatorsScreen from "../screens/ApplicatorsScreen"
 import { createStackNavigator } from "@react-navigation/stack"
 
@@ -17,7 +17,6 @@ const ApplicatorStackNavigator = () => {
                 name="ApplicatorsScreen"
                 component={ApplicatorsScreen}
             />
-
             <Stack.Screen name="InventorScreen" component={InventorScreen} />
             <Stack.Screen name="PremiumScreen" component={PremiumScreen} />
             <Stack.Screen name="RegularScreen" component={RegularScreen} />

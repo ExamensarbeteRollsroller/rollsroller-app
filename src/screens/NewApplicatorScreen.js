@@ -6,7 +6,7 @@ import {
     TextInput,
     ScrollView,
 } from "react-native"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -36,7 +36,6 @@ const NewApplicatorScreen = () => {
     const [productValue, setProductValue] = useState("Entry")
     const [dropdownfocus, setDropdownfocus] = useState(false)
     const [slider, setSlider] = useState(parseFloat(1))
-    const [save, onSave] = useState(false)
     const [duplicate, setDuplicate] = useState(false)
     const [empty, setEmpty] = useState(false)
     const userApplicators = useSelector(selectApplicators)
@@ -61,43 +60,33 @@ const NewApplicatorScreen = () => {
         return false
     }
 
-    useEffect(() => {
-        const saveData = async () => {
-            var _userApplicators = []
-            if (validateInput(nameInput, connectionIPInput)) {
-                if (checkDuplicateName(nameInput)) {
-                    setDuplicate(true)
-                } else {
-                    for (let i = 0; i < userApplicators.length; i++) {
-                        _userApplicators.push(userApplicators[i])
-                    }
-                    var applicator = {
-                        key: Math.floor(Math.random() * 1000),
-                        name: nameInput,
-                        product: productValue,
-                        connectionIP: connectionIPInput,
-                        light: slider,
-                    }
-                    _userApplicators.push(applicator)
-
-                    dispatch(setApplicators(_userApplicators))
-                    const jsonValue = JSON.stringify(_userApplicators)
-                    await SecureStore.setItemAsync(
-                        "_userApplicators",
-                        jsonValue
-                    )
-
-                    // Upload the new data to the database.
-                    navigation.goBack()
+    const saveData = async () => {
+        var _userApplicators = []
+        if (validateInput(nameInput, connectionIPInput)) {
+            if (checkDuplicateName(nameInput)) {
+                setDuplicate(true)
+            } else {
+                for (let i = 0; i < userApplicators.length; i++) {
+                    _userApplicators.push(userApplicators[i])
                 }
-            } else setEmpty(true)
-        }
+                var applicator = {
+                    key: Math.floor(Math.random() * 1000),
+                    name: nameInput,
+                    product: productValue,
+                    connectionIP: connectionIPInput,
+                    light: slider,
+                }
+                _userApplicators.push(applicator)
 
-        if (save) {
-            saveData()
-        }
-        onSave(false)
-    }, [save])
+                dispatch(setApplicators(_userApplicators))
+                const jsonValue = JSON.stringify(_userApplicators)
+                await SecureStore.setItemAsync("_userApplicators", jsonValue)
+
+                // Upload the new data to the database.
+                navigation.goBack()
+            }
+        } else setEmpty(true)
+    }
 
     return (
         <SafeAreaView
@@ -247,7 +236,7 @@ const NewApplicatorScreen = () => {
                         style={buttons.buttonDynamic}
                         onPress={() => {
                             console.log(t("myapplicatorsettings:save"))
-                            onSave(true)
+                            saveData()
                         }}
                         underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}

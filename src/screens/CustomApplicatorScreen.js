@@ -6,7 +6,7 @@ import {
     TextInput,
     ScrollView,
 } from "react-native"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -38,8 +38,6 @@ const CustomApplicatorScreen = (props) => {
     const [productValue, setProductValue] = useState(product)
     const [dropdownfocus, setDropdownfocus] = useState(false)
     const [slider, setSlider] = useState(parseFloat(light))
-    const [save, onSave] = useState(false)
-    const [trash, onTrash] = useState(false)
     const [duplicate, setDuplicate] = useState(false)
     const userApplicators = useSelector(selectApplicators)
     const dispatch = useDispatch()
@@ -57,68 +55,54 @@ const CustomApplicatorScreen = (props) => {
         return false
     }
 
-    useEffect(() => {
-        const saveData = async () => {
-            var _userApplicators = []
-            var stateChange = 0
-            const index = userApplicators.findIndex((item) => item.key === key)
-            if (checkDuplicateName(nameInput)) {
-                setDuplicate(true)
-            } else {
-                for (let i = 0; i < userApplicators.length; i++) {
-                    if (i !== index) _userApplicators.push(userApplicators[i])
-                    else {
-                        var applicator = {
-                            key: key,
-                            product: productValue,
-                            light: slider,
-                        }
-                        if (nameInput) {
-                            applicator.name = nameInput
-                            stateChange++
-                        } else applicator.name = name
-                        if (connectionIPInput) {
-                            applicator.connectionIP = connectionIPInput
-                            stateChange++
-                        } else applicator.connectionIP = connectionIP
-                        _userApplicators.push(applicator)
-                    }
-                }
-
-                dispatch(setApplicators(_userApplicators))
-                const jsonValue = JSON.stringify(_userApplicators)
-                await SecureStore.setItemAsync("_userApplicators", jsonValue)
-
-                // Upload the new data to the database.
-                if (stateChange === 0) navigation.goBack()
-            }
-        }
-
-        if (save) {
-            saveData()
-        }
-        onSave(false)
-    }, [save])
-
-    useEffect(() => {
-        const trashData = async () => {
-            var _userApplicators = []
-            const index = userApplicators.findIndex((item) => item.key === key)
-
+    const saveSettings = async () => {
+        var _userApplicators = []
+        var stateChange = 0
+        const index = userApplicators.findIndex((item) => item.key === key)
+        if (checkDuplicateName(nameInput)) {
+            setDuplicate(true)
+        } else {
             for (let i = 0; i < userApplicators.length; i++) {
                 if (i !== index) _userApplicators.push(userApplicators[i])
+                else {
+                    var applicator = {
+                        key: key,
+                        product: productValue,
+                        light: slider,
+                    }
+                    if (nameInput) {
+                        applicator.name = nameInput
+                        stateChange++
+                    } else applicator.name = name
+                    if (connectionIPInput) {
+                        applicator.connectionIP = connectionIPInput
+                        stateChange++
+                    } else applicator.connectionIP = connectionIP
+                    _userApplicators.push(applicator)
+                }
             }
 
             dispatch(setApplicators(_userApplicators))
             const jsonValue = JSON.stringify(_userApplicators)
             await SecureStore.setItemAsync("_userApplicators", jsonValue)
+
+            // Upload the new data to the database.
+            if (stateChange === 0) navigation.goBack()
+        }
+    }
+
+    const removeApplicator = async () => {
+        var _userApplicators = []
+        const index = userApplicators.findIndex((item) => item.key === key)
+
+        for (let i = 0; i < userApplicators.length; i++) {
+            if (i !== index) _userApplicators.push(userApplicators[i])
         }
 
-        if (trash) {
-            trashData()
-        }
-        onTrash(false)
-    }, [trash])
+        dispatch(setApplicators(_userApplicators))
+        const jsonValue = JSON.stringify(_userApplicators)
+        await SecureStore.setItemAsync("_userApplicators", jsonValue)
+    }
 
     return (
         <SafeAreaView
@@ -266,7 +250,7 @@ const CustomApplicatorScreen = (props) => {
                     style={[buttons.buttonDynamic, styles.trashButton]}
                     onPress={() => {
                         console.log("trash this applicator.")
-                        onTrash(true)
+                        removeApplicator()
                     }}
                     underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                     activeOpacity={1}
@@ -282,7 +266,7 @@ const CustomApplicatorScreen = (props) => {
                         style={buttons.buttonDynamic}
                         onPress={() => {
                             console.log(t("myapplicatorsettings:save"))
-                            onSave(true)
+                            saveSettings()
                         }}
                         underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                         activeOpacity={1}
