@@ -52,22 +52,28 @@ const CustomApplicatorScreen = (props) => {
     useEffect(() => {
         const saveData = async () => {
             var _userApplicators = []
-            const index = userApplicators.findIndex((item) => item.key === key)
             var stateChange = 0
+            const index = userApplicators.findIndex((item) => item.key === key)
 
             for (let i = 0; i < userApplicators.length; i++) {
                 if (i !== index) _userApplicators.push(userApplicators[i])
+                else {
+                    var applicator = {
+                        key: key,
+                        product: productValue,
+                        light: slider,
+                    }
+                    if (nameInput) {
+                        applicator.name = nameInput
+                        stateChange++
+                    } else applicator.name = name
+                    if (connectionIPInput) {
+                        applicator.connectionIP = connectionIPInput
+                        stateChange++
+                    } else applicator.connectionIP = connectionIP
+                    _userApplicators.push(applicator)
+                }
             }
-            var applicator = { key: key, product: productValue, light: slider }
-            if (nameInput) {
-                applicator.name = nameInput
-                stateChange++
-            } else applicator.name = name
-            if (connectionIPInput) {
-                applicator.connectionIP = connectionIPInput
-                stateChange++
-            } else applicator.connectionIP = connectionIP
-            _userApplicators.push(applicator)
 
             dispatch(setApplicators(_userApplicators))
             const jsonValue = JSON.stringify(_userApplicators)
