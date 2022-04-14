@@ -7,6 +7,7 @@ import CustomApplicatorScreen from "../screens/CustomApplicatorScreen"
 import ConnectionApplicatorScreen from "../screens/ConnectionApplicatorScreen"
 import NewApplicatorScreen from "../screens/NewApplicatorScreen"
 import { selectApplicators } from "../../data/slices/applicatorsSlice"
+import QRCodeScannerScreen from "../screens/QRCodeScannerScreen"
 
 const MyApplicatorsStackNavigator = () => {
     const Stack = createStackNavigator()
@@ -44,6 +45,10 @@ const MyApplicatorsStackNavigator = () => {
                     />
                 ))
             )}
+            <Stack.Screen
+                name="QRCodeScannerScreen"
+                component={QRCodeScannerScreen}
+            />
             <Stack.Screen
                 name="NewApplicatorScreen"
                 component={NewApplicatorScreen}

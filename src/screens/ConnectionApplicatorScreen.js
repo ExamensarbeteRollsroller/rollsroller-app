@@ -3,9 +3,7 @@ import {
     Text,
     View,
     TouchableHighlight,
-    Pressable,
     ActivityIndicator,
-    Modal,
 } from "react-native"
 import React, { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -29,6 +27,7 @@ init({
 })
 
 const ConnectionApplicatorScreen = (props) => {
+    const { key, name, product, connectionIP, light } = props.route.params
     const { t } = useTranslation()
     const theme = useSelector(selectTheme)
     const [isConnected, setConnected] = useState(false)
@@ -37,7 +36,6 @@ const ConnectionApplicatorScreen = (props) => {
         t("connection:moveroller")
     )
     const [modalVisibility, setModalVisibility] = useState(false)
-    const { key, name, product, connectionIP, light } = props.route.params
 
     const cclient = new Paho.MQTT.Client(connectionIP, 9001, name)
     const [client, setClient] = useState(cclient)

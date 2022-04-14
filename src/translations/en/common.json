@@ -54,6 +54,8 @@
         "duplicatemodaltext": "Can not have the same name of applicators. ",
         "emptymodaltitle": "Empty fields",
         "emptymodaltext": "Must put a value in every field. ",
+        "invalidmodaltitle": "Invalid scan",
+        "invalidmodaltext": "Invalid data from QR scan. ",
         "modalconfirmation": "OK"
     },
     "connection": {
@@ -68,6 +70,10 @@
         "modaltitle": "Error",
         "modaltext": "Could not connect to the applicator. Check it is turned on and if the IP is correct. ",
         "modalbuttontext": "Close"
+    },
+    "qrcode": {
+        "title": "QR-code scanner",
+        "manual": "Manual input"
     },
     "applicators": {
         "inventor": "Inventor Edition",

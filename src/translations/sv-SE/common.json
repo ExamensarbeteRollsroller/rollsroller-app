@@ -54,6 +54,8 @@
         "duplicatemodaltext": "Kan inte ha samma namn på två applikatorer. ",
         "emptymodaltitle": "Tomma fält",
         "emptymodaltext": "Varje textfält måste ha ett värde. ",
+        "invalidmodaltitle": "Ogiltig skann",
+        "invalidmodaltext": "Ogiltig data från QR skann. ",
         "modalconfirmation": "OK"
     },
     "connection": {
@@ -68,6 +70,10 @@
         "modaltitle": "Error",
         "modaltext": "Kunde inte ansluta till applikatorn. Kolla om den är på och om rätt IP är sparad. ",
         "modalbuttontext": "Stäng"
+    },
+    "qrcode": {
+        "title": "QR-code skannare",
+        "manual": "Manuell input"
     },
     "applicators": {
         "inventor": "Inventor Edition",
