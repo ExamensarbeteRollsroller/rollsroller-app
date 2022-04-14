@@ -6,7 +6,7 @@ import {
     TextInput,
     ScrollView,
 } from "react-native"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -25,7 +25,7 @@ import { buttons } from "../../styles/buttons"
 import { input } from "../../styles/input"
 import ErrorModal from "../components/ErrorModal"
 
-const NewApplicatorScreen = () => {
+const NewApplicatorScreen = (props) => {
     const { t } = useTranslation()
     const theme = useSelector(selectTheme)
     const navigation = useNavigation()
@@ -33,20 +33,38 @@ const NewApplicatorScreen = () => {
     const [nameFocus, setNameFocus] = useState(false)
     const [connectionIPInput, onChangeConnectionIP] = useState(false)
     const [connectionIPFocus, setConnectionIPFocus] = useState(false)
-    const [productValue, setProductValue] = useState("Entry")
+    const [productValue, setProductValue] = useState("Inventor")
     const [dropdownfocus, setDropdownfocus] = useState(false)
     const [slider, setSlider] = useState(parseFloat(1))
-    const [duplicate, setDuplicate] = useState(false)
-    const [empty, setEmpty] = useState(false)
+    const [modalVisibility, setModalVisibility] = useState(false)
+    const [modalTitle, setModalTitle] = useState("")
+    const [modalText, setModalText] = useState("")
+    const [modalConfirmation, setModalConfirmation] = useState("")
     const userApplicators = useSelector(selectApplicators)
     const dispatch = useDispatch()
 
     const products = [
-        { name: "Entry" },
-        { name: "Regular" },
-        { name: "Premium" },
         { name: "Inventor" },
+        { name: "Premium" },
+        { name: "Regular" },
+        { name: "Entry" },
     ]
+
+    useEffect(() => {
+        try {
+            const { product, connectionIP } = props.route.params
+            if (product !== "secretcode") {
+                setProductValue(product)
+                onChangeConnectionIP(connectionIP)
+            }
+        } catch (error) {
+            console.log(error)
+            setModalVisibility(true)
+            setModalTitle(t("newapplicator:invalidmodaltitle"))
+            setModalText(t("newapplicator:invalidmodaltext"))
+            setModalConfirmation(t("newapplicator:modalconfirmation"))
+        }
+    }, [])
 
     const validateInput = (n, c) => {
         if (n === false || n === "") return false
@@ -64,7 +82,10 @@ const NewApplicatorScreen = () => {
         var _userApplicators = []
         if (validateInput(nameInput, connectionIPInput)) {
             if (checkDuplicateName(nameInput)) {
-                setDuplicate(true)
+                setModalVisibility(true)
+                setModalTitle(t("newapplicator:duplicatemodaltitle"))
+                setModalText(t("newapplicator:duplicatemodaltext"))
+                setModalConfirmation(t("newapplicator:modalconfirmation"))
             } else {
                 for (let i = 0; i < userApplicators.length; i++) {
                     _userApplicators.push(userApplicators[i])
@@ -85,7 +106,12 @@ const NewApplicatorScreen = () => {
                 // Upload the new data to the database.
                 navigation.goBack()
             }
-        } else setEmpty(true)
+        } else {
+            setModalVisibility(true)
+            setModalTitle(t("newapplicator:emptymodaltitle"))
+            setModalText(t("newapplicator:emptymodaltext"))
+            setModalConfirmation(t("newapplicator:modalconfirmation"))
+        }
     }
 
     return (
@@ -185,6 +211,7 @@ const NewApplicatorScreen = () => {
                             placeholder={t(
                                 "newapplicator:connectionipplaceholder"
                             )}
+                            value={connectionIPInput}
                             textContentType="none"
                             autoComplete="off"
                             autoCapitalize="none"
@@ -248,18 +275,11 @@ const NewApplicatorScreen = () => {
                 </View>
             </View>
             <ErrorModal
-                modalVisibility={duplicate}
-                setModalVisibility={setDuplicate}
-                title={t("newapplicator:duplicatemodaltitle")}
-                text={t("newapplicator:duplicatemodaltext")}
-                buttonText={t("newapplicator:modalconfirmation")}
-            />
-            <ErrorModal
-                modalVisibility={empty}
-                setModalVisibility={setEmpty}
-                title={t("newapplicator:emptymodaltitle")}
-                text={t("newapplicator:emptymodaltext")}
-                buttonText={t("newapplicator:modalconfirmation")}
+                modalVisibility={modalVisibility}
+                setModalVisibility={setModalVisibility}
+                title={modalTitle}
+                text={modalText}
+                buttonText={modalConfirmation}
             />
         </SafeAreaView>
     )

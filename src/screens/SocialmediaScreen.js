@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native"
 import React from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import PageTopBar from "../components/PageTopBar"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
+
 import { selectTheme } from "../../data/slices/themeSlice"
+import PageTopBar from "../components/PageTopBar"
 
 const SocialmediaScreen = () => {
     const { t } = useTranslation()

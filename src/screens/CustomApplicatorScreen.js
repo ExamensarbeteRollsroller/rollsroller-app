@@ -309,11 +309,11 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
     },
     trashButton: {
-        marginLeft: 32,
+        marginLeft: 56,
         marginRight: 16,
     },
     saveContainer: {
         flexGrow: 1,
-        marginRight: 32,
+        marginRight: 56,
     },
 })
