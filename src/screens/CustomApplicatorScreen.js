@@ -6,7 +6,7 @@ import {
     TextInput,
     ScrollView,
 } from "react-native"
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -33,7 +33,6 @@ const CustomApplicatorScreen = (props) => {
     const navigation = useNavigation()
     const [nameInput, onChangeName] = useState(false)
     const [nameFocus, setNameFocus] = useState(false)
-    const nameRef = useRef(null)
     const [connectionIPInput, onChangeConnectionIP] = useState(false)
     const [connectionIPFocus, setConnectionIPFocus] = useState(false)
     const [productValue, setProductValue] = useState(product)
@@ -157,7 +156,6 @@ const CustomApplicatorScreen = (props) => {
                                 nameFocus && input.focusBorder,
                             ]}
                             onChangeText={onChangeName}
-                            ref={nameRef}
                             placeholder={
                                 name + "                                       " //Added spaces to make the textInput fill to the sides
                             }
@@ -298,9 +296,9 @@ const CustomApplicatorScreen = (props) => {
             <ErrorModal
                 modalVisibility={duplicate}
                 setModalVisibility={setDuplicate}
-                title={t("connection:modaltitle")}
-                text="får inte ha duplicate namn"
-                buttonText={t("connection:modalbuttontext")}
+                title={t("myapplicatorsettings:modaltitle")}
+                text={t("myapplicatorsettings:duplicatetext")}
+                buttonText={t("myapplicatorsettings:modalconfirmation")}
             />
         </SafeAreaView>
     )

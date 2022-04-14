@@ -41,10 +41,20 @@
         "product": "Produkt: ",
         "connectionip": "IP-adress: ",
         "light": "Ljusnivå: ",
+        "modaltitle": "Dubblett av namn",
+        "duplicatetext": "Kan inte ha samma namn på två applikatorer. ",
+        "modalconfirmation": "OK",
         "save": "Spara"
     },
     "newapplicator": {
-        "title": "Ny applikator"
+        "title": "Ny applikator",
+        "nameplaceholder": "Namn",
+        "connectionipplaceholder": "xxx.xxx.xxx.xxx",
+        "duplicatemodaltitle": "Dubblett av namn",
+        "duplicatemodaltext": "Kan inte ha samma namn på två applikatorer. ",
+        "emptymodaltitle": "Tomma fält",
+        "emptymodaltext": "Varje textfält måste ha ett värde. ",
+        "modalconfirmation": "OK"
     },
     "connection": {
         "connect": "Anslut",
