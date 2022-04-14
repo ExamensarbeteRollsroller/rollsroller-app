@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
     langItem: {
         flexDirection: "row",
         padding: 8,
+        height: 56,
+        alignItems: "center",
     },
     langText: {
         fontSize: 20,
