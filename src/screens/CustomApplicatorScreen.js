@@ -76,7 +76,6 @@ const CustomApplicatorScreen = (props) => {
                     } else applicator.name = name
                     if (connectionIPInput) {
                         applicator.connectionIP = connectionIPInput
-                        stateChange++
                     } else applicator.connectionIP = connectionIP
                     _userApplicators.push(applicator)
                 }
