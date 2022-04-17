@@ -29,9 +29,9 @@ const NewApplicatorScreen = (props) => {
     const { t } = useTranslation()
     const theme = useSelector(selectTheme)
     const navigation = useNavigation()
-    const [nameInput, onChangeName] = useState(false)
+    const [nameInput, onChangeName] = useState("")
     const [nameFocus, setNameFocus] = useState(false)
-    const [connectionIPInput, onChangeConnectionIP] = useState(false)
+    const [connectionIPInput, onChangeConnectionIP] = useState("")
     const [connectionIPFocus, setConnectionIPFocus] = useState(false)
     const [productValue, setProductValue] = useState("Inventor")
     const [dropdownfocus, setDropdownfocus] = useState(false)
@@ -67,8 +67,8 @@ const NewApplicatorScreen = (props) => {
     }, [])
 
     const validateInput = (n, c) => {
-        if (n === false || n === "") return false
-        if (c === false || c === "") return false
+        if (n === "") return false
+        if (c === "") return false
         return true
     }
 
@@ -152,6 +152,7 @@ const NewApplicatorScreen = (props) => {
                                 t("newapplicator:nameplaceholder") +
                                 "                                       " //Added spaces to make the textInput fill to the sides
                             }
+                            value={nameInput}
                             textContentType="none"
                             autoComplete="off"
                             autoCapitalize="words"
