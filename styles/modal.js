@@ -31,6 +31,16 @@ const modal = StyleSheet.create({
     modalHeaderText: {
         fontSize: 20,
     },
+    line: {
+        marginTop: 8,
+        width: "100%",
+        borderBottomWidth: 1,
+    },
+    modalButtonGroup: {
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+    },
 })
 
 export { modal }

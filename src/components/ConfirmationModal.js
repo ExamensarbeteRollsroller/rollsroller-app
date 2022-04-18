@@ -13,12 +13,14 @@ import { buttons } from "../../styles/buttons"
 import { modal } from "../../styles/modal"
 import { selectTheme } from "../../data/slices/themeSlice"
 
-const ErrorModal = ({
+const ConfirmationModal = ({
     modalVisibility,
     setModalVisibility,
+    func,
     title,
     text,
-    buttonText,
+    button1Text,
+    button2Text,
 }) => {
     const theme = useSelector(selectTheme)
 
@@ -67,23 +69,49 @@ const ErrorModal = ({
                             },
                         ]}
                     ></View>
-                    <TouchableHighlight
-                        style={[buttons.buttonDynamic, { marginTop: 8 }]}
-                        onPress={() => {
-                            console.log("Closing modal...")
-                            setModalVisibility(!modalVisibility)
-                        }}
-                        underlayColor={theme.theme.BUTTON_PRESS_COLOR}
-                        activeOpacity={1}
-                    >
-                        <Text style={buttons.buttonText}>{buttonText}</Text>
-                    </TouchableHighlight>
+                    <View style={modal.modalButtonGroup}>
+                        <TouchableHighlight
+                            style={[
+                                buttons.buttonDynamic,
+                                { marginTop: 8, width: "20%" },
+                            ]}
+                            onPress={() => {
+                                func()
+                                console.log("Removing applicator")
+                                setModalVisibility(!modalVisibility)
+                                console.log("Closing modal...")
+                            }}
+                            underlayColor={theme.theme.BUTTON_PRESS_COLOR}
+                            activeOpacity={1}
+                        >
+                            <Text style={buttons.buttonText}>
+                                {button1Text}
+                            </Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                            style={[
+                                buttons.buttonDynamic,
+                                { marginTop: 8, width: "20%" },
+                            ]}
+                            onPress={() => {
+                                console.log("Not removing applicator")
+                                setModalVisibility(!modalVisibility)
+                                console.log("Closing modal...")
+                            }}
+                            underlayColor={theme.theme.BUTTON_PRESS_COLOR}
+                            activeOpacity={1}
+                        >
+                            <Text style={buttons.buttonText}>
+                                {button2Text}
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
                 </Pressable>
             </Pressable>
         </Modal>
     )
 }
 
-export default ErrorModal
+export default ConfirmationModal
 
 const styles = StyleSheet.create({})
