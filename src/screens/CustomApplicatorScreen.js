@@ -25,6 +25,7 @@ import PageTopBar from "../components/PageTopBar"
 import { buttons } from "../../styles/buttons"
 import { input } from "../../styles/input"
 import ErrorModal from "../components/ErrorModal"
+import ConfirmationModal from "../components/ConfirmationModal"
 
 const CustomApplicatorScreen = (props) => {
     const { key, name, product, connectionIP, light } = props.route.params
@@ -39,6 +40,7 @@ const CustomApplicatorScreen = (props) => {
     const [dropdownfocus, setDropdownfocus] = useState(false)
     const [slider, setSlider] = useState(parseFloat(light))
     const [duplicate, setDuplicate] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
     const userApplicators = useSelector(selectApplicators)
     const dispatch = useDispatch()
 
@@ -248,8 +250,8 @@ const CustomApplicatorScreen = (props) => {
                 <TouchableHighlight
                     style={[buttons.buttonDynamic, styles.trashButton]}
                     onPress={() => {
-                        console.log("trash this applicator.")
-                        removeApplicator()
+                        console.log("Trash this applicator.")
+                        setConfirmation(true)
                     }}
                     underlayColor={theme.theme.BUTTON_PRESS_COLOR}
                     activeOpacity={1}
@@ -282,6 +284,15 @@ const CustomApplicatorScreen = (props) => {
                 title={t("myapplicatorsettings:modaltitle")}
                 text={t("myapplicatorsettings:duplicatetext")}
                 buttonText={t("myapplicatorsettings:modalconfirmation")}
+            />
+            <ConfirmationModal
+                modalVisibility={confirmation}
+                setModalVisibility={setConfirmation}
+                func={removeApplicator}
+                title={t("myapplicatorsettings:confirmationtitle")}
+                text={t("myapplicatorsettings:confirmationtext")}
+                button1Text={t("myapplicatorsettings:yes")}
+                button2Text={t("myapplicatorsettings:no")}
             />
         </SafeAreaView>
     )

@@ -13,7 +13,11 @@
         "support": "Support",
         "socialmedia": "Social Media",
         "changelang": "Change language",
-        "logout": "Log out"
+        "logout": "Log out",
+        "confirmationtitle": "Confirmation",
+        "confirmationtext": "Are you sure you want to log out?",
+        "yes": "Yes",
+        "no": "No"
     },
     "languageselection": {
         "chooselang": "Choose Language",
@@ -44,7 +48,11 @@
         "modaltitle": "Duplicate name",
         "duplicatetext": "Can not have the same name of applicators. ",
         "modalconfirmation": "OK",
-        "save": "Save"
+        "save": "Save",
+        "confirmationtitle": "Confirmation",
+        "confirmationtext": "Are you sure you want to remove this applicator?",
+        "yes": "Yes",
+        "no": "No"
     },
     "newapplicator": {
         "title": "New applicator",

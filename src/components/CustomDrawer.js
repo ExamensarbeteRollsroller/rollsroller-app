@@ -27,6 +27,7 @@ import { setApplicators } from "../../data/slices/applicatorsSlice"
 import { buttons } from "../../styles/buttons"
 import { switchTheme, selectTheme } from "../../data/slices/themeSlice"
 import LanguageModal from "./LanguageModal"
+import ConfirmationModal from "./ConfirmationModal"
 
 const CustomDrawer = (props) => {
     const { t } = useTranslation()
@@ -34,6 +35,7 @@ const CustomDrawer = (props) => {
     const userEmail = useSelector(selectEmail)
     const theme = useSelector(selectTheme)
     const [modalVisibility, setModalVisibility] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
 
     const handleLogout = async () => {
         await SecureStore.setItemAsync("_userData", "null")
@@ -93,7 +95,7 @@ const CustomDrawer = (props) => {
                 {userEmail !== null && (
                     <TouchableOpacity
                         onPress={() => {
-                            handleLogout()
+                            setConfirmation(true)
                         }}
                         style={styles.logoutbutton}
                     >
@@ -118,6 +120,15 @@ const CustomDrawer = (props) => {
             <LanguageModal
                 modalVisibility={modalVisibility}
                 setModalVisibility={setModalVisibility}
+            />
+            <ConfirmationModal
+                modalVisibility={confirmation}
+                setModalVisibility={setConfirmation}
+                func={handleLogout}
+                title={t("menu:confirmationtitle")}
+                text={t("menu:confirmationtext")}
+                button1Text={t("menu:yes")}
+                button2Text={t("menu:no")}
             />
         </View>
     )

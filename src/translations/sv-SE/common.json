@@ -13,7 +13,11 @@
         "support": "Kundtjänst",
         "socialmedia": "Sociala Medier",
         "changelang": "Byt språk",
-        "logout": "Logga ut"
+        "logout": "Logga ut",
+        "confirmationtitle": "Bekräftelse",
+        "confirmationtext": "Är du säker på att du vill logga ut?",
+        "yes": "Ja",
+        "no": "Nej"
     },
     "languageselection": {
         "chooselang": "Välj språk",
@@ -44,7 +48,11 @@
         "modaltitle": "Dubblett av namn",
         "duplicatetext": "Kan inte ha samma namn på två applikatorer. ",
         "modalconfirmation": "OK",
-        "save": "Spara"
+        "save": "Spara",
+        "confirmationtitle": "Bekräftelse",
+        "confirmationtext": "Är du säker på att du vill ta bort denna applikatorn?",
+        "yes": "Ja",
+        "no": "Nej"
     },
     "newapplicator": {
         "title": "Ny applikator",
@@ -73,7 +81,7 @@
     },
     "qrcode": {
         "title": "QR-code skannare",
-        "manual": "Manuell input"
+        "manual": "Manuell inmatning"
     },
     "applicators": {
         "inventor": "Inventor Edition",
