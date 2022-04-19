@@ -70,12 +70,7 @@ const LanguageModal = ({ modalVisibility, setModalVisibility }) => {
                         >
                             <View style={styles.langItem}>
                                 <Text style={styles.langText}>{lang.flag}</Text>
-                                <Text
-                                    style={[
-                                        styles.langText,
-                                        { paddingLeft: 8 },
-                                    ]}
-                                >
+                                <Text style={styles.langText}>
                                     {t("languageselection:" + lang.language)}
                                 </Text>
                             </View>
@@ -103,5 +98,6 @@ const styles = StyleSheet.create({
     },
     langText: {
         fontSize: 20,
+        paddingLeft: 8,
     },
 })

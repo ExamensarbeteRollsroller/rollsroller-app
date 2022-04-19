@@ -4,12 +4,14 @@ import {
     View,
     TouchableHighlight,
     ActivityIndicator,
+    BackHandler,
 } from "react-native"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useSelector } from "react-redux"
 import init from "react_native_mqtt"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { buttons } from "../../styles/buttons"
@@ -30,6 +32,7 @@ const ConnectionApplicatorScreen = (props) => {
     const { key, name, product, connectionIP, light } = props.route.params
     const { t } = useTranslation()
     const theme = useSelector(selectTheme)
+    const navigation = useNavigation()
     const [isConnected, setConnected] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const [moveButtonText, setMoveButtonText] = useState(
@@ -39,6 +42,27 @@ const ConnectionApplicatorScreen = (props) => {
 
     const cclient = new Paho.MQTT.Client(connectionIP, 9001, name)
     const [client, setClient] = useState(cclient)
+
+    useEffect(() => {
+        const backAction = () => {
+            if (client.isConnected()) disconnect()
+        }
+
+        const hardwareBackPressHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        )
+
+        const beforeRemoveHandler = navigation.addListener(
+            "beforeRemove",
+            backAction
+        )
+
+        return () => {
+            hardwareBackPressHandler.remove()
+            beforeRemoveHandler.remove()
+        }
+    }, [])
 
     const onConnect = () => {
         console.log("Connected :)")

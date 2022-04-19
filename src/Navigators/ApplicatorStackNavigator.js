@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native"
 import React from "react"
 import ApplicatorsScreen from "../screens/ApplicatorsScreen"
 import { createStackNavigator } from "@react-navigation/stack"
@@ -26,4 +25,3 @@ const ApplicatorStackNavigator = () => {
 }
 
 export default ApplicatorStackNavigator
-const styles = StyleSheet.create({})
