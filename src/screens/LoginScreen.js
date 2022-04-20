@@ -147,14 +147,16 @@ const LoginScreen = () => {
                             setEmailFocus(false)
                         }}
                     />
-                    <Text
-                        style={[
-                            !validateEmail(email) && input.errorTextInvalid,
-                            input.errorText,
-                        ]}
-                    >
-                        {!validateEmail(email) && t("login:invalidEmail")}
-                    </Text>
+                    <View style={input.errorContainer}>
+                        <Text
+                            style={[
+                                !validateEmail(email) && input.errorTextInvalid,
+                                input.errorText,
+                            ]}
+                        >
+                            {!validateEmail(email) && t("login:invalidEmail")}
+                        </Text>
+                    </View>
                     <Text
                         style={[input.label, { color: theme.theme.TEXT_COLOR }]}
                     >
@@ -185,16 +187,18 @@ const LoginScreen = () => {
                             setPasswordFocus(false)
                         }}
                     />
-                    <Text
-                        style={[
-                            !validatePassword(password) &&
-                                input.errorTextInvalid,
-                            input.errorText,
-                        ]}
-                    >
-                        {!validatePassword(password) &&
-                            t("login:invalidPassword")}
-                    </Text>
+                    <View style={input.errorContainer}>
+                        <Text
+                            style={[
+                                !validatePassword(password) &&
+                                    input.errorTextInvalid,
+                                input.errorText,
+                            ]}
+                        >
+                            {!validatePassword(password) &&
+                                t("login:invalidPassword")}
+                        </Text>
+                    </View>
                 </View>
                 <View style={styles.buttonGroup}>
                     <TouchableHighlight
