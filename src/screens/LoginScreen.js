@@ -12,12 +12,7 @@ import { useDispatch, useSelector } from "react-redux"
 import * as SecureStore from "expo-secure-store"
 
 import PageTopBar from "../components/PageTopBar"
-import {
-    setEmail,
-    setFname,
-    setLname,
-    setCompany,
-} from "../../data/slices/userSlice"
+import { setUserData } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
 import { selectTheme } from "../../data/slices/themeSlice"
 import { buttons } from "../../styles/buttons"
@@ -32,7 +27,6 @@ const LoginScreen = () => {
     )
     const [emailFocus, setEmailFocus] = useState(false)
     const [passwordFocus, setPasswordFocus] = useState(false)
-    const [login, onLoginPress] = useState(false)
     const passwordInput = useRef(null)
     const dispatch = useDispatch()
     // Temporary dummy login data
@@ -86,13 +80,14 @@ const LoginScreen = () => {
                 in temporary redux for state handling. 
             */
         // const userData = await fetch(apiURL)
+        console.log(
+            userData.email,
+            userData.fname,
+            userData.lname,
+            userData.company
+        )
         if (userData) {
-            dispatch(
-                setEmail(userData.email),
-                setFname(userData.fname),
-                setLname(userData.lname),
-                setCompany(userData.company)
-            )
+            dispatch(setUserData(userData))
             const jsonValue = JSON.stringify(userData)
             await SecureStore.setItemAsync("_userData", jsonValue)
         }

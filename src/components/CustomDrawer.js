@@ -16,13 +16,7 @@ import { useTranslation } from "react-i18next"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import * as SecureStore from "expo-secure-store"
 import { useDispatch, useSelector } from "react-redux"
-import {
-    setEmail,
-    setFname,
-    setLname,
-    setCompany,
-    selectEmail,
-} from "../../data/slices/userSlice"
+import { setUserData, selectUserData } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
 import { buttons } from "../../styles/buttons"
 import { switchTheme, selectTheme } from "../../data/slices/themeSlice"
@@ -32,20 +26,15 @@ import ConfirmationModal from "./ConfirmationModal"
 const CustomDrawer = (props) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const userEmail = useSelector(selectEmail)
+    const userData = useSelector(selectUserData)
     const theme = useSelector(selectTheme)
     const [modalVisibility, setModalVisibility] = useState(false)
     const [confirmation, setConfirmation] = useState(false)
 
     const handleLogout = async () => {
-        await SecureStore.setItemAsync("_userData", "null")
-        dispatch(
-            setEmail(null),
-            setFname(null),
-            setLname(null),
-            setCompany(null)
-        )
-        await SecureStore.setItemAsync("_userApplicators", "null")
+        await SecureStore.deleteItemAsync("_userData")
+        dispatch(setUserData(null))
+        await SecureStore.deleteItemAsync("_userApplicators")
         dispatch(setApplicators(null))
         console.log("logout")
     }
@@ -92,7 +81,7 @@ const CustomDrawer = (props) => {
                         {t("menu:changelang")}
                     </Text>
                 </TouchableHighlight>
-                {userEmail !== null && (
+                {userData !== null && (
                     <TouchableOpacity
                         onPress={() => {
                             setConfirmation(true)

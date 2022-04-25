@@ -34,6 +34,13 @@
         "login": "Log in",
         "register": "Register"
     },
+    "myprofile": {
+        "emailprompt": "Email:",
+        "firstnameprompt": "First name:",
+        "lastnameprompt": "Last name:",
+        "companyprompt": "Company:",
+        "applicatorsprompt": "Applicators:"
+    },
     "myapplicators": {
         "settings": "Settings",
         "connect": "Connect",
