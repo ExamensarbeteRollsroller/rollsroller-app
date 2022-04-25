@@ -2,7 +2,7 @@
     "startscreen": {
         "title": "Rollsroller",
         "welcome": "Välkommen",
-        "lorem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+        "info": "Denna appen är här för att hjälpa dig med ditt applikatorbord. \n\nDu kan hitta information om alla olika applikatorer och om du loggar in kan du ansluta dig till ditt eget. \n\nOm du behöver support kan du hitta hjälp i sidmenyn. Du kan även hitta mer om oss under Sociala Medier. "
     },
     "menu": {
         "home": "Hem",
