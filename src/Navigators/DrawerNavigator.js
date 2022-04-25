@@ -16,13 +16,7 @@ import SocialmediaScreen from "../screens/SocialmediaScreen"
 import CustomDrawer from "../components/CustomDrawer"
 import SplashScreen from "../screens/SplashScreen"
 import ApplicatorStackNavigator from "./ApplicatorStackNavigator"
-import {
-    setEmail,
-    setFname,
-    setLname,
-    setCompany,
-    selectEmail,
-} from "../../data/slices/userSlice"
+import { setUserData, selectUserData } from "../../data/slices/userSlice"
 import { setApplicators } from "../../data/slices/applicatorsSlice"
 import { selectTheme } from "../../data/slices/themeSlice"
 
@@ -30,29 +24,30 @@ const DrawerNavigator = () => {
     const Drawer = createDrawerNavigator()
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const userEmail = useSelector(selectEmail)
-    const [userData, setUserData] = useState("")
+    const userUserData = useSelector(selectUserData)
+    const [userData, setNewUserData] = useState("")
     const theme = useSelector(selectTheme)
 
     useEffect(() => {
         const fetchData = async () => {
             const _userData = await SecureStore.getItemAsync("_userData")
-            if (_userData !== null && _userData !== "null") {
+            if (_userData !== null) {
                 const values = JSON.parse(_userData)
-                dispatch(
-                    setEmail(values.email),
-                    setFname(values.fname),
-                    setLname(values.lname),
-                    setCompany(values.company)
-                )
+                const user = {
+                    email: values.email,
+                    fname: values.fname,
+                    lname: values.lname,
+                    company: values.company,
+                }
+                dispatch(setUserData(user))
             }
-            setUserData(_userData)
+            setNewUserData(_userData)
         }
         const fetchApplicators = async () => {
             const _applicators = await SecureStore.getItemAsync(
                 "_userApplicators"
             )
-            if (_applicators !== null && _applicators !== "null") {
+            if (_applicators !== null) {
                 const values = JSON.parse(_applicators)
                 dispatch(setApplicators(values))
             }
@@ -91,7 +86,7 @@ const DrawerNavigator = () => {
                             ),
                         }}
                     />
-                    {userEmail === null && (
+                    {userUserData === null && (
                         <Drawer.Screen
                             name={t("menu:login")}
                             component={LoginScreen}
@@ -106,7 +101,7 @@ const DrawerNavigator = () => {
                             }}
                         />
                     )}
-                    {userEmail !== null && (
+                    {userUserData !== null && (
                         <Drawer.Screen
                             name={t("menu:myprofile")}
                             component={MyProfileScreen}
@@ -121,7 +116,7 @@ const DrawerNavigator = () => {
                             }}
                         />
                     )}
-                    {userEmail !== null && (
+                    {userUserData !== null && (
                         <Drawer.Screen
                             name={t("menu:myapplicators")}
                             component={MyApplicatorsStackNavigator}

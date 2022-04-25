@@ -44,7 +44,7 @@ const ErrorModal = ({
                         style={[
                             modal.modalHeader,
                             {
-                                backgroundColor: theme.theme.PRIMARY_COLOR,
+                                backgroundColor: theme.theme.ERROR_COLOR,
                                 marginBottom: 8,
                             },
                         ]}
@@ -68,7 +68,12 @@ const ErrorModal = ({
                         ]}
                     ></View>
                     <TouchableHighlight
-                        style={[buttons.buttonDynamic, { marginTop: 8 }]}
+                        style={[
+                            buttons.buttonDynamic,
+                            {
+                                marginTop: 8,
+                            },
+                        ]}
                         onPress={() => {
                             console.log("Closing modal...")
                             setModalVisibility(!modalVisibility)

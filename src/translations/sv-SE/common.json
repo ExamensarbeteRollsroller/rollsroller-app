@@ -34,6 +34,13 @@
         "login": "Logga in",
         "register": "Registrera dig"
     },
+    "myprofile": {
+        "emailprompt": "Mejladress:",
+        "firstnameprompt": "Förnamn:",
+        "lastnameprompt": "Efternamn:",
+        "companyprompt": "Företag:",
+        "applicatorsprompt": "Applikatorer:"
+    },
     "myapplicators": {
         "settings": "Inställningar",
         "addnewapplicator": "+ Ny applikator",

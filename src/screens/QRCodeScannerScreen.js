@@ -25,7 +25,14 @@ const QRCodeScannerScreen = () => {
     useEffect(() => {
         const perm = async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync()
+            console.log(status)
             setHasPermission(status === "granted")
+            if (status === "denied") {
+                navigation.replace("NewApplicatorScreen", {
+                    product: "secretcode",
+                    connectionIP: "secretcode",
+                })
+            }
         }
         perm()
     }, [])
@@ -51,10 +58,38 @@ const QRCodeScannerScreen = () => {
     }
 
     if (hasPermission === null) {
-        return <Text>Requesting for camera permission</Text>
+        return (
+            <SafeAreaView
+                style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+            >
+                <PageTopBar title={t("qrcode:title")} />
+                <View
+                    style={{
+                        flex: 1,
+                        backgroundColor: theme.theme.BACKGROUND_COLOR,
+                    }}
+                >
+                    <Text>Requesting for camera permission</Text>
+                </View>
+            </SafeAreaView>
+        )
     }
     if (hasPermission === false) {
-        navigation.replace("NewApplicatorScreen")
+        return (
+            <SafeAreaView
+                style={{ flex: 1, backgroundColor: theme.theme.PRIMARY_COLOR }}
+            >
+                <PageTopBar title={t("qrcode:title")} />
+                <View
+                    style={{
+                        flex: 1,
+                        backgroundColor: theme.theme.BACKGROUND_COLOR,
+                    }}
+                >
+                    <Text>Permissions needed</Text>
+                </View>
+            </SafeAreaView>
+        )
     }
 
     return (

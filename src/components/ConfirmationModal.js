@@ -73,15 +73,19 @@ const ConfirmationModal = ({
                         <TouchableHighlight
                             style={[
                                 buttons.buttonDynamic,
-                                { marginTop: 8, width: "20%" },
+                                {
+                                    marginTop: 8,
+                                    width: "20%",
+                                    backgroundColor: theme.theme.ERROR_COLOR,
+                                },
                             ]}
                             onPress={() => {
                                 func()
-                                console.log("Removing applicator")
+                                console.log("Yes")
                                 setModalVisibility(!modalVisibility)
                                 console.log("Closing modal...")
                             }}
-                            underlayColor={theme.theme.BUTTON_PRESS_COLOR}
+                            underlayColor={theme.theme.ERROR_ACTIVE_COLOR}
                             activeOpacity={1}
                         >
                             <Text style={buttons.buttonText}>
@@ -91,10 +95,13 @@ const ConfirmationModal = ({
                         <TouchableHighlight
                             style={[
                                 buttons.buttonDynamic,
-                                { marginTop: 8, width: "20%" },
+                                {
+                                    marginTop: 8,
+                                    width: "20%",
+                                },
                             ]}
                             onPress={() => {
-                                console.log("Not removing applicator")
+                                console.log("No")
                                 setModalVisibility(!modalVisibility)
                                 console.log("Closing modal...")
                             }}

@@ -248,12 +248,16 @@ const CustomApplicatorScreen = (props) => {
                 ]}
             >
                 <TouchableHighlight
-                    style={[buttons.buttonDynamic, styles.trashButton]}
+                    style={[
+                        buttons.buttonDynamic,
+                        styles.trashButton,
+                        { backgroundColor: theme.theme.ERROR_COLOR },
+                    ]}
                     onPress={() => {
                         console.log("Trash this applicator.")
                         setConfirmation(true)
                     }}
-                    underlayColor={theme.theme.BUTTON_PRESS_COLOR}
+                    underlayColor={theme.theme.ERROR_ACTIVE_COLOR}
                     activeOpacity={1}
                 >
                     <MaterialCommunityIcons
