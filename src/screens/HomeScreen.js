@@ -24,12 +24,12 @@ const HomeScreen = () => {
             >
                 <View style={styles.video}>
                     <YoutubePlayer
-                        height={300}
+                        height={250}
                         play={false}
-                        videoId={"gphIFfDERjM"}
+                        videoId={"rxs2CLqFVXE"}
                     />
                 </View>
-                <View style={styles.buttongroup}>
+                <View style={styles.container}>
                     <Text
                         style={[styles.text, { color: theme.theme.TEXT_COLOR }]}
                     >
@@ -41,7 +41,7 @@ const HomeScreen = () => {
                             { color: theme.theme.TEXT_COLOR },
                         ]}
                     >
-                        {t("startscreen:lorem")}
+                        {t("startscreen:info")}
                     </Text>
                 </View>
             </View>
@@ -52,8 +52,10 @@ const HomeScreen = () => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
-    buttongroup: {
+    container: {
         alignItems: "center",
+        marginLeft: 56,
+        marginRight: 56,
     },
     text: {
         fontSize: 20,
@@ -63,8 +65,6 @@ const styles = StyleSheet.create({
     breadText: {
         fontSize: 18,
         fontWeight: "400",
-        marginLeft: 15,
-        marginRight: 15,
     },
     video: {
         /*Do we even need to modify it? Looks alright already */
