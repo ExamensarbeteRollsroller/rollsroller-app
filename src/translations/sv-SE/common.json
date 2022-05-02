@@ -80,5 +80,44 @@
         "premium": "Premium Edition",
         "regular": "Regular Edition",
         "entry": "Entry Edition"
+    },
+    "tablescreens": {
+        "entrytitle": "ROLLSROLLER ENTRY",
+        "regulartitle": "ROLLSROLLER REGULAR",
+        "premiumtitle": "ROLLSROLLER PREMIUM",
+        "inventortitle": "ROLLSROLLER INVENTOR"
+    },
+    "applicatordescription": {
+        "entrytable": "ROLLSROLLER ENTRY is our entry model of Flatbed Applicator. Delivered flat packed for access to almost any sign shop environment. Fast setup and low investment cost gives you access to the ROLLSROLLER flatbed production method today.  ",
+        "inventortable": "WANT TO GO FOR GOLD? LET ROLLSROLLER® INVENTOR EDITION TAKE YOUR SIGN COMPANY TO THE NEXT LEVEL.",
+        "premiumtable": "ROLLSROLLER PREMIUM is the origin of Flatbed Applicators and a benchmark for this technology. Premium is our best seller, made to meet the needs of high volume industrial production. Premium is equipped with side trays for rolls of banner media, which makes it ideal for flex-face sign applications.",
+        "regulartable": "ROLLSROLLER REGULAR is our standard model of Flatbed Applicator. It has a wide range of options available. Pneumatically controlled roller which is automatically adjusted for substrates up to 60 mm (2 2/5in).",
+        "manual": "Manualer",
+        "ownersmanual": "ROLLSROLLER Owner's manual"
+    },
+    "support": {
+        "contactform": "Kontaktformulär",
+        "info": "INFO: ",
+        "infotelefon": "Telefon: +46-54-770-7010 ",
+        "infoemail": "E-mail: info@rollsroller.se ",
+        "support": "SUPPORT: ",
+        "supporttelefon": "Telefon: +46-54-770-7070 ",
+        "supportemail": "E-mail: support@rollsroller.se ",
+        "logistics": "LOGISTIKTJÄNSTER: ",
+        "logitelefon": "Telefon: +46-54-770-7060 ",
+        "logiemail": "E-mail: logistics@rollsroller.se ",
+        "formproblem": "För vilket bord uppstår problemet?",
+        "formproblemcategory": "Problemkategori: ",
+        "formsubject": "Ämne",
+        "formdescription": "Beskrivning av problemet: ",
+        "formsend": "Skicka",
+        "customersupp": "Kundtjänst ROLLSROLLER SV"
+
+    },
+    "social": {
+        "youtube": "Youtube",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "twitter": "Twitter"
     }
 }
