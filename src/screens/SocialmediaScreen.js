@@ -25,9 +25,10 @@ const SocialmediaScreen = () => {
             >
                 <View style={styles.buttongroup}>
                 <MaterialCommunityIcons
-                                    name="youtube"
-                                    size={22}  
-                                />
+                    name="youtube"
+                    size={48}
+                    onPress={() => Linking.openURL('https://www.youtube.com/user/ROLLSROLLER')}>
+                </MaterialCommunityIcons>
                  <Text style={{color: 'blue', marginTop: 2}}
                           onPress={() => Linking.openURL('https://www.youtube.com/user/ROLLSROLLER')}>
                          {t("social:youtube")}
@@ -36,8 +37,8 @@ const SocialmediaScreen = () => {
                 <View style={styles.buttongroup}>
                 <MaterialCommunityIcons
                                     name="instagram"
-                                    size={22}  
-                                />
+                                    size={48}  
+                                    onPress={() => Linking.openURL('https://www.instagram.com/rollsroller_flatbed_applicator/')}/>
                  <Text style={{color: 'blue', marginTop: 2}}
                           onPress={() => Linking.openURL('https://www.instagram.com/rollsroller_flatbed_applicator/')}>
                          {t("social:instagram")}
@@ -46,7 +47,8 @@ const SocialmediaScreen = () => {
                 <View style={styles.buttongroup}>
                 <MaterialCommunityIcons
                                     name="facebook"
-                                    size={22}  
+                                    size={48}  
+                                    onPress={() => Linking.openURL('https://www.facebook.com/rollsroller')}
                                 />
                  <Text style={{color: 'blue', marginTop: 2}}
                           onPress={() => Linking.openURL('https://www.facebook.com/rollsroller')}>
@@ -56,7 +58,8 @@ const SocialmediaScreen = () => {
                 <View style={styles.buttongroup}>
                 <MaterialCommunityIcons
                                     name="twitter"
-                                    size={22}  
+                                    size={48}  
+                                    onPress={() => Linking.openURL('https://www.twitter.com/rollsroller')}
                                 />
                  <Text style={{color: 'blue', marginTop: 2}}
                           onPress={() => Linking.openURL('https://www.twitter.com/rollsroller')}>
@@ -72,7 +75,7 @@ export default SocialmediaScreen
 
 const styles = StyleSheet.create({
     buttongroup: {
-        marginTop: 100,
+        marginTop: 80,
         alignItems: "center",
     },
     text: {
