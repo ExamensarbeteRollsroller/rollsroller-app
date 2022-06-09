@@ -32,6 +32,7 @@ const CustomDrawer = (props) => {
     const [confirmation, setConfirmation] = useState(false)
 
     const handleLogout = async () => {
+        // Remove data from the app to log the user out
         await SecureStore.deleteItemAsync("_userData")
         dispatch(setUserData(null))
         await SecureStore.deleteItemAsync("_userApplicators")
@@ -81,6 +82,7 @@ const CustomDrawer = (props) => {
                         {t("menu:changelang")}
                     </Text>
                 </TouchableHighlight>
+                {/* Only show if there is userdata available */}
                 {userData !== null && (
                     <TouchableOpacity
                         onPress={() => {

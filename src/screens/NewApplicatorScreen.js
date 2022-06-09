@@ -50,6 +50,7 @@ const NewApplicatorScreen = (props) => {
         { name: "Entry" },
     ]
 
+    // Check is some route parameters are available, set values accordingly
     useEffect(() => {
         try {
             const { product, connectionIP } = props.route.params
@@ -66,6 +67,7 @@ const NewApplicatorScreen = (props) => {
         }
     }, [])
 
+    // Check if input is empty
     const validateInput = (n, c) => {
         if (n === "") return false
         if (c === "") return false

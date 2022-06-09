@@ -37,6 +37,10 @@ const QRCodeScannerScreen = () => {
         perm()
     }, [])
 
+    // Check if data is valid in QR-code
+    // It should be an object, such as:
+    // {"product":"Inventor", "connectionIP":"xxx.xxx.xxx.xxx"}
+    // "product" and "connectionIP" are the important values since they dictate what data to use
     const handleBarCodeScanned = ({ data }) => {
         try {
             const JSONdata = JSON.parse(data)

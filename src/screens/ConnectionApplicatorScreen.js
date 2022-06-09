@@ -43,6 +43,7 @@ const ConnectionApplicatorScreen = (props) => {
     const cclient = new Paho.MQTT.Client(connectionIP, 9001, name)
     const [client, setClient] = useState(cclient)
 
+    // Remove the client when the user backs out
     useEffect(() => {
         const backAction = () => {
             if (client.isConnected()) disconnect()

@@ -29,6 +29,7 @@ const LoginScreen = () => {
     const [passwordFocus, setPasswordFocus] = useState(false)
     const passwordInput = useRef(null)
     const dispatch = useDispatch()
+
     // Temporary dummy login data
     const userData = {
         email: "john@blund.se",
@@ -54,6 +55,7 @@ const LoginScreen = () => {
     ]
 
     const validateEmail = (em) => {
+        // regex of how emails are allowed to look, might not be perfect
         const res =
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         return res.test(em.toLowerCase())
@@ -64,6 +66,8 @@ const LoginScreen = () => {
     }
 
     const fetchData = async () => {
+        // Uncomment below for when adding a database and making user input necessary
+
         /*if (!validateEmail(email)) {
                 console.log(!validateEmail(email))
                 return

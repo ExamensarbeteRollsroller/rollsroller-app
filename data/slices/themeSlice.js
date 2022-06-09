@@ -11,6 +11,7 @@ export const themesSlice = createSlice({
     reducers: {
         switchTheme: (state, action) => {
             // For some reason this does not seem to work
+            // Possible doing the check at the switch and sending the value in the payload might work
             if (state.theme === LIGHT) state.theme = DARK
             else state.theme = LIGHT
         },
