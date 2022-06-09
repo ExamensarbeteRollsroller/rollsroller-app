@@ -24,7 +24,6 @@ const problems = [
     { name: "Missing parts" },
     { name: "Other" },
 ]
-/* MAILTO FÖR ATT SKICKA FORMULÄRET?!?!?!?! \\\   */
 const SupportScreen = (props) => {
     const [description, setDescription] = useState("false");
     const [table, setTable] = useState("false");
@@ -102,6 +101,7 @@ const SupportScreen = (props) => {
                         setModalVisible(!modalVisible);
                         }}
                     >
+                    
                         <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             
@@ -193,7 +193,7 @@ const SupportScreen = (props) => {
                             <TouchableHighlight
                                 style={[buttons.buttonDynamic, {height: 100, width: "90%"}]}
                                 
-                                onPress={() =>  {Linking.openURL("mailto:mattias_k60@hotmail.com?subject=" + t("support:customersupp") + "&body=" + "Bordet:" + table + "%0D%0A %0D%0A Kategori:" + category + "%0D%0A %0D%0A Ämne:" + subject + "%0D%0A %0D%0A Beskrivning:" + description);
+                                onPress={() =>  {Linking.openURL("mailto:support@rollsroller.se?subject=" + t("support:customersupp") + "&body=" + "Bordet:" + table + "%0D%0A %0D%0A Kategori:" + category + "%0D%0A %0D%0A Ämne:" + subject + "%0D%0A %0D%0A Beskrivning:" + description); //Change email address to the email you want customer forms to
                                 setModalVisible(!modalVisible)}}
                                 >
                                  <Text style={styles.contacttext}>
