@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, TouchableHighlight, Modal, TextInput, Linking } from "react-native"
+import { StyleSheet, Text, View, TouchableHighlight, Modal, TextInput, Linking, Pressable } from "react-native"
 import React, { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import PageTopBar from "../components/PageTopBar"
@@ -8,17 +8,13 @@ import { selectTheme } from "../../data/slices/themeSlice"
 import { buttons } from "../../styles/buttons"
 import { useNavigation } from "@react-navigation/native"
 import { Dropdown } from "react-native-element-dropdown"
-
-
 import {
-    setApplicators,
-    selectApplicators,
+    selectApplicators
 } from "../../data/slices/applicatorsSlice"
-
-
 import { input } from "../../styles/input"
 
-const problems = [
+
+const problems = [ //Just some examples, add with common problems which suits
     { name: "Roller does not move" },
     { name: "QR Code does not register" },
     { name: "Missing parts" },
@@ -91,8 +87,8 @@ const SupportScreen = (props) => {
                         style={[styles.breadtext, { color: theme.theme.TEXT_COLOR }]}>
                         {t("support:logiemail")}
                     </Text>
-                </View>
-                <View style={styles.centeredView}>
+                </View>  
+                <View style={styles.centeredView}> 
                     <Modal
                         animationType="slide"
                         transparent={true}
@@ -101,7 +97,13 @@ const SupportScreen = (props) => {
                         setModalVisible(!modalVisible);
                         }}
                     >
-                    
+            <Pressable //Closes the modal when clicking outside of the modal window
+                onPress={() => {
+                    console.log("Closing modal...") //Remove console logs before publishing
+                    setModalVisible(!modalVisible);
+                }}
+            >
+            <Pressable style={styles.modalContainer}>
                         <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             
@@ -113,7 +115,7 @@ const SupportScreen = (props) => {
                         >
                             {t("support:formproblem")}
                             </Text>
-                            <Dropdown
+                            <Dropdown   //Might want to add specific tables in the future instead of only the registered/named tables
                                 style={[styles.dropdown,
                                     input.textInput,
                                     dropdownfocus && {
@@ -180,20 +182,19 @@ const SupportScreen = (props) => {
                                 { color: theme.theme.TEXT_COLOR },
                             ]}>{t("support:formdescription")}</Text>
                             <TextInput style={[styles.description, input.textInput] }
-                            
-                            multiline={true}
-                            onChangeText={(value) => (setDescription(value))}
-                            placeholder={
-                                t("support:formdescription") +
-                                "                                       " //Added spaces to make the textInput fill to the sides
-                                
+                                multiline={true}
+                                onChangeText={(value) => (setDescription(value))}
+                                placeholder={
+                                    t("support:formdescription") +
+                                    "                                       " 
+                                    
                             }>
 
                             </TextInput>
                             <TouchableHighlight
                                 style={[buttons.buttonDynamic, {height: 100, width: "90%"}]}
-                                
-                                onPress={() =>  {Linking.openURL("mailto:support@rollsroller.se?subject=" + t("support:customersupp") + "&body=" + "Bordet:" + table + "%0D%0A %0D%0A Kategori:" + category + "%0D%0A %0D%0A Ämne:" + subject + "%0D%0A %0D%0A Beskrivning:" + description); //Change email address to the email you want customer forms to
+                                //Change email address to the email you want customer forms sent to
+                                onPress={() =>  {Linking.openURL("mailto:support@rollsroller.se?subject=" + t("support:customersupp") + "&body=" + "Bordet:" + table + "%0D%0A %0D%0A Kategori:" + category + "%0D%0A %0D%0A Ämne:" + subject + "%0D%0A %0D%0A Beskrivning:" + description); 
                                 setModalVisible(!modalVisible)}}
                                 >
                                  <Text style={styles.contacttext}>
@@ -202,6 +203,8 @@ const SupportScreen = (props) => {
                             </TouchableHighlight>
                         </View>
                         </View>
+                    </Pressable>
+                    </Pressable>
                     </Modal>
                 </View>
 
@@ -236,7 +239,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         marginBottom: 20,
-        
     },
     breadtext: {
         fontSize: 15,
@@ -248,13 +250,10 @@ const styles = StyleSheet.create({
         fontWeight: "400",
     },
     centeredView: {
-        
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 21
       },
     modalView: {
-        marginTop: 70,
         width: "100%",
         height: "100%",
         backgroundColor: "#FFFF",
@@ -272,8 +271,11 @@ const styles = StyleSheet.create({
     description: {
         height: "20%",
         textAlignVertical: "top",
-        maxWidth: "90%"
-        
-        
+        maxWidth: "90%"  
+    },
+    modalContainer: {
+        width: "100%",
+        marginTop: 56,
+        elevation: 4,
     }
 })
