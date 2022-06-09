@@ -58,6 +58,7 @@ const DrawerNavigator = () => {
 
     return (
         <>
+            {/* Show a splashscreen while data is fetched */}
             {userData === "" && <SplashScreen />}
             {userData !== "" && (
                 <Drawer.Navigator
@@ -86,6 +87,7 @@ const DrawerNavigator = () => {
                             ),
                         }}
                     />
+                    {/* Only show if there is no userdata available */}
                     {userUserData === null && (
                         <Drawer.Screen
                             name={t("menu:login")}
@@ -101,6 +103,7 @@ const DrawerNavigator = () => {
                             }}
                         />
                     )}
+                    {/* Only show if there is userdata available */}
                     {userUserData !== null && (
                         <Drawer.Screen
                             name={t("menu:myprofile")}

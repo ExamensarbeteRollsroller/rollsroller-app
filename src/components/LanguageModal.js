@@ -32,6 +32,7 @@ const LanguageModal = ({ modalVisibility, setModalVisibility }) => {
                 setModalVisibility(!modalVisibility)
             }}
         >
+            {/* Pressable for enabling closing of the modal by pressing on the outside */}
             <Pressable
                 style={modal.modal}
                 onPress={() => {
@@ -39,6 +40,7 @@ const LanguageModal = ({ modalVisibility, setModalVisibility }) => {
                     setModalVisibility(!modalVisibility)
                 }}
             >
+                {/* Pressable to nullify the previous one */}
                 <Pressable style={modal.modalContainer}>
                     <View
                         style={[
@@ -55,6 +57,7 @@ const LanguageModal = ({ modalVisibility, setModalVisibility }) => {
                             {t("languageselection:chooselang")}
                         </Text>
                     </View>
+                    {/* Use .map to create a button for each language easily */}
                     {languages.map((lang) => (
                         <TouchableOpacity
                             key={lang.code}

@@ -32,6 +32,7 @@ const ErrorModal = ({
                 setModalVisibility(!modalVisibility)
             }}
         >
+            {/* Pressable for enabling closing of the modal by pressing on the outside */}
             <Pressable
                 style={modal.modal}
                 onPress={() => {
@@ -39,6 +40,7 @@ const ErrorModal = ({
                     setModalVisibility(!modalVisibility)
                 }}
             >
+                {/* Pressable to nullify the previous one */}
                 <Pressable style={[modal.modalContainer, { paddingBottom: 8 }]}>
                     <View
                         style={[

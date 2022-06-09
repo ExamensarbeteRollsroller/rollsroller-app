@@ -45,6 +45,7 @@ const MyApplicatorsScreen = () => {
                     { backgroundColor: theme.theme.BACKGROUND_COLOR },
                 ]}
             >
+                {/* If there are user applicators available, create listings for each of them */}
                 {userApplicators === null ? (
                     <></>
                 ) : (

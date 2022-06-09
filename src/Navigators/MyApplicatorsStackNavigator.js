@@ -23,6 +23,7 @@ const MyApplicatorsStackNavigator = () => {
                 name="MyApplicatorsScreen"
                 component={MyApplicatorsScreen}
             />
+            {/* If there are user applicators available, create screens for each of them */}
             {userApplicators === null ? (
                 <></>
             ) : (
